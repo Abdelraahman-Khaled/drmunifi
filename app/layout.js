@@ -3,6 +3,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "./components/Navbar";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
                     <link rel="stylesheet" href="/assets/css/style-ar.css" />
                 </head>
                 <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                    <Preloader />
                     <Navbar />
                     {children}
                     <Footer />
