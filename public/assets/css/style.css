@@ -26124,6 +26124,7 @@ Doctor Details Area CSS
   margin-left: -15px;
   margin-bottom: 0;
   margin-top: 0;
+  padding-right: 40px;
 }
 
 .education-desc ul li {
@@ -26133,7 +26134,6 @@ Doctor Details Area CSS
   font-size: 14.5px;
   line-height: 1.7;
   padding-left: 15px;
-  padding-right: 15px;
   padding-top: 25px;
 }
 

@@ -32,7 +32,11 @@ export default function RootLayout({ children }) {
                 <head>
                     <link
                         rel="stylesheet"
-                        href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+                        href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+                    />
+                    <link
+                        rel="stylesheet"
+                        href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
                     />
                     <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
                     <link rel="stylesheet" href="/assets/css/style.css" />
