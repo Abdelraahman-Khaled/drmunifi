@@ -94,6 +94,11 @@ body {
     padding-right: 50px;
 }
 
+[dir="ltr"] .faq-accordion {
+    padding-left: 50px;
+    padding-right: initial;
+}
+
 .faq-accordion .accordion {
     list-style-type: none;
     padding-left: 0;
@@ -276,6 +281,9 @@ blockquote::after,
 .faq-accordion .accordion .accordion-item {
     text-align: right;
 }
+[dir = "ltr"] .faq-accordion .accordion .accordion-item {
+    text-align: left;
+}
 
 .doctor-details-image .social {
     padding-left: initial;
@@ -350,3 +358,15 @@ blockquote::after,
         margin: 0;
     }
 }
+
+/* Home Feedback RTL */
+[dir="rtl"] .feedback-slides .next-arrow {
+    left: -20px;
+    right: auto;
+}
+
+[dir="rtl"] .feedback-slides .prev-arrow {
+    right: -20px;
+    left: auto;
+}
+

@@ -41,3 +41,65 @@ a {
   }
 }
 
+
+
+/* Preloader CSS */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader .loading-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.preloader .loading {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3dde9e; /* Main color from style.css */
+    border-bottom-color: #030b58; /* Secondary color from style.css */
+    animation: spin 1.5s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.preloader #loading-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader #loading-icon img {
+    width: 100%;
+    height: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,4 +1,422 @@
 export const translations = {
+    home: {
+        ar: {
+            hero: {
+                title: "جراحة السمنة طريقك للرشاقة والجمال",
+                desc: "جراحة السمنة هي الخيار الأمثل لتحقيق الرشاقة والجمال بطريقة آمنة وفعّالة، بفضل التقنيات المتطورة والإشراف الطبي المتخصص يمكنك الآن التخلص من الوزن الزائد والتمتع بحياة أكثر صحة وحيوية.",
+                btn1: "حدد موعداً",
+                btn2: "أنواع جراحات السمنة"
+            },
+            about: {
+                title: "مسيرة مهنية غنية بالخبرة والإنجازات",
+                sub: "الدكتور عبد الله بن مساعد المنيفي، تاريخ من الإبداع والتميز",
+                btn: "اكتشف التفاصيل الآن"
+            },
+            mission: {
+                title: "مزايا فريدة",
+                sub: "اكتشف فوائد جراحة السمنة وابدأ رحلتك نحو التغيير",
+                desc: "تقدم جراحة علاج السمنة مجموعة متنوعة من الفوائد لمن يعانون من السمنة، بما في ذلك تحسين الصحة وزيادة القدرة على الحركة وتعزيز احترام الذات بالإضافة إلى:",
+                cards: [
+                    {
+                        icon: "fi fi-rr-doctor",
+                        title: "تعزيز الصحة والوقاية",
+                        sub: "تقليل المخاطر الصحية المزمنة وتحقيق حياة أكثر صحة."
+                    },
+                    {
+                        icon: "fi fi-rr-muscle",
+                        title: "استعادة النشاط والحيوية",
+                        sub: "زيادة القدرة على الحركة والتمتع بطاقة يومية عالية."
+                    },
+                    {
+                        icon: "fi fi-rr-user-trust",
+                        title: "رفع الثقة بالنفس",
+                        sub: "تغيير المظهر وزيادة شعور الرضا عن الذات."
+                    },
+                    {
+                        icon: "fi fi-rr-head-side-medical",
+                        title: "تحقيق الاستقرار النفسي",
+                        sub: "التخفيف من التوتر وتحقيق توازن نفسي أفضل."
+                    }
+                ]
+            },
+            importance: {
+                title: "أهمية جراحة السمنة",
+                sub: "دور جراحة السمنة في تحسين الصحة",
+                desc: "لا تعالج جراحة إنقاص الوزن مرض السمنة فحسب بل تعالج أيضاً حالات أخرى مثل مرض السكري وأمراض القلب وارتفاع ضغط الدم والتهاب المفاصل والارتجاع الحمضي بالإضافة إلى ذلك تقلل الجراحة بشكل كبير من خطر الوفاة بسبب السرطان والسكري وأمراض القلب وأمراض أخرى.",
+                cards: [
+                    {
+                        icon: "fi fi-rr-heart-rate",
+                        title: "تحسين صحة القلب",
+                        sub: "تقليل ضغط الدم والكوليسترول لتحسين صحة القلب."
+                    },
+                    {
+                        icon: "fi fi-rr-arrow-comparison",
+                        title: "زيادة تدفق الأوكسجين",
+                        sub: "تحسين وصول الأوكسجين إلى الأنسجة والعضلات."
+                    },
+                    {
+                        icon: "fi fi-rr-laptop-medical",
+                        title: "دعم صحة الشرايين",
+                        sub: "تقليل تراكم الدهون وتحسين تدفق الدم."
+                    },
+                    {
+                        icon: "flaticon-laboratory",
+                        title: "خفض مستويات الدهون الضارة",
+                        sub: "تقليل الدهون المشبعة والكوليسترول الضار لتحسين صحة القلب."
+                    }
+                ]
+            },
+            videoGallery: {
+                title: "مجموعة الفيديوهات المميزة",
+                subTitle: "محتوى متخصص بجراحة السمنة",
+                desc: "استكشف كل ما تحتاج معرفته عن جراحة السمنة من خلال فيديوهاتنا المميزة!",
+                videos: [
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/2.webp" },
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
+                    { id: "kVbs8IwkqIk", thumbnail: "/assets/img/video-thumbnails/2.webp" }
+                ],
+                btn: "مزيد من الفيديوهات"
+            },
+            photoGallery: {
+                title: "رحلة صحية تبدأ بخطوة وقرار",
+                subTitle: "دليلك نحو حياة صحية أفضل",
+                desc: "ابدأ الآن لأن صحتك تستحق بداية جديدة",
+                items: [
+                    { pdf: "/assets/img/Infographic/01.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 01.webp" },
+                    { pdf: "/assets/img/Infographic/03.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 03.webp" },
+                    { pdf: "/assets/img/Infographic/04.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 04.webp" },
+                    { pdf: "/assets/img/Infographic/05.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 05.webp" }
+                ]
+            },
+            bmiCalculator: {
+                title: "مؤشر كتلة الجسم (BMI) | دليلك لفهم وزنك وصحتك بشكل أفضل",
+                subTitle: "اكتشف وضعك الصحي بسرعة باستخدام مؤشر كتلة الجسم BMI",
+                desc: "يتم حساب مؤشر كتلة الجسم باستخدام وزنك وطولك (وزنك مقسوماً على طولك مربعاً)، جنباً إلى جنب مع العديد من العوامل الأخرى، مثل ضغط الدم والكوليسترول ويمكن أن يساعد مؤشر كتلة الجسم في تقدير خطر الإصابة بنوبة قلبية أو سكتة دماغية.",
+                heightLabel: "اكتب طولك (سم)",
+                weightLabel: "اكتب وزنك (كغ)",
+                btn: "احسب",
+                tableTitle: "أقسام مؤشرات الكتلة",
+                categories: [
+                    { range: "أقل من 18.5", label: "وزن ناقص" },
+                    { range: "من 18.5 إلى 24.9", label: "وزن صحي" },
+                    { range: "من 25 إلى 29.9", label: "وزن زائد" },
+                    { range: "من 30 إلى 34.9", label: "سمنة من الدرجة الأولى" },
+                    { range: "من 35 إلى 39.9", label: "سمنة من الدرجة الثانية" },
+                    { range: "من 40 أو أكثر", label: "سمنة من درجة ثالثة" }
+                ],
+                note: "ملاحظة: الجدول الخاص بـ مؤشرات يبقى ثابتاً",
+                resultTitle: "النتيجة",
+                yourBmi: "مؤشر كتلة جسمك:",
+                statusLabel: {
+                    underweight: "نقص في الوزن",
+                    healthy: "صحيح",
+                    overweight: "الوزن زائد",
+                    obese: "بدين"
+                }
+            },
+            operations: {
+                title: "جراحات السمنة",
+                subTitle: "اكتشف أحدث أنواع جراحات السمنة وابدأ رحلة التحول الصحي",
+                desc: "استعرض جميع أنواع جراحة السمنة وتعرف على كل التفاصيل المتعلقة بكل خيار!",
+                items: [
+                    {
+                        title: "تكميم المعدة",
+                        description: "تكميم المعدة واحدة من أكثر جراحات السمنة شيوعاً في العالم وتتميز بفعاليتها الكبيرة في إنقاص الوزن ويتم فيها استئصال جزء...",
+                        cardImage: "/assets/img/icons/تكميم المعدة.webp",
+                        slug: "تكميم-المعدة"
+                    },
+                    {
+                        title: "عملية استئصال المرارة",
+                        description: "استئصال المرارة هو إجراء جراحي يُستخدم لإزالة المرارة عند تكوّن الحصوات التي تسبب ألماً أو التهابات متكررة.",
+                        cardImage: "/assets/img/icons/ربط المعدة.webp",
+                        slug: "عملية-استئصال-المرارة"
+                    },
+                    {
+                        title: "تحويل المسار المصغر",
+                        description: "تحويل المسار المصغر هو إجراء أبسط من تحويل المسار التقليدي ولكنه يوفر نتائج مماثلة في إنقاص الوزن ويتم فيه...",
+                        cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
+                        slug: "تحويل-المسار-المصغر"
+                    }
+                ],
+                btn: "اطلع على خيارات الجراحة الأخرى",
+                readMore: "اقرأ المزيد"
+            },
+            feedback: {
+                title: "آراء عملائنا",
+                subTitle: "تقييمات تعكس تميزنا",
+                desc: "اكتشف تجارب حقيقية من عملائنا الذين اختاروا رحلتهم نحو التحول معنا، آراء صادقة تعكس نجاحاتهم وثقتهم في رعايتنا.",
+                items: [
+                    {
+                        name: "رنيم العتيق",
+                        feedback: "خدمة ممتازة، التزام بالمواعيد واهتمام كبير بالتفاصيل. شكرًا لكم على جودة العمل",
+                        image: "/assets/img/client-image/1.png"
+                    },
+                    {
+                        name: "عبدالعزيز القحطاني",
+                        feedback: "تسلم أياديكم على الشغل الممتاز. نظافة، دقة، والتزام كامل بالموعد. شكرًا لكم.",
+                        image: "/assets/img/client-image/2.png"
+                    }
+                ]
+            },
+            faq: {
+                title: "الأسئلة الأكثر شيوعاً",
+                subTitle: "تعرف على كل ما يهمك حول جراحة السمنة!",
+                items: [
+                    {
+                        question: "من لا يصلح لجراحة إنقاص الوزن؟",
+                        answer: "الأفراد الذين لا يستوفون معايير مؤشر كتلة الجسم لا يصلحون عادة لجراحة السمنة، قد يستوفي شخص ما معايير مؤشر كتلة الجسم، ولكن بعد مقابلة الجراح، يمكن تحديد أن المخاطر الفردية أكبر من الفائدة المحتملة للجراحة، هذه المواقف نادرة ويتم مناقشتها بشكل فردي مع فريق الرعاية الخاص بك."
+                    },
+                    {
+                        question: "كم تكلفة جراحة السمنة؟",
+                        answer: "تعتمد تكاليف الإجراء على المريض والجراحة وأي صعوبات قد تحدث بعد الجراحة، في كثير من الحالات، تغطي شركات التأمين تكلفة الجراحة لأن السمنة المفرطة يمكن أن تكون حالة تهدد الحياة، يجب عليك التحدث مع شركة التأمين الخاصة بك للتأكد من تغطية الجراحة وأي نفقات ذات صلة."
+                    },
+                    {
+                        question: "هل يمكن إجراء الجراحة بالمنظار حتى لو أجريت جراحة بطن مفتوحة من قبل؟",
+                        answer: "سيقوم الجراح بتقييمك على أساس فردي، من الممكن إجراء عملية تحويل مسار المعدة بالمنظار بعد إجراء جراحة بطن مفتوحة أو إجراءات بطنية بالمنظار الأخرى، يعتقد جراحونا أن لكل مريض الحق في الحصول على فرصة اختيار الجراحة الأقل توغلاً كخيار."
+                    },
+                    {
+                        question: "ماذا يحدث للمعدة، هل تنكمش؟",
+                        answer: "تصبح المعدة المتبقية أصغر حجماً بمرور الوقت لأنها لم تعد تتمدد بالطعام والشراب، ولكنها لا تزال تؤدي غرض أساسي في إنتاج حمض المعدة والإنزيمات لمساعدتك على هضم الطعام."
+                    },
+                    {
+                        question: "كم من الوقت سأبقى في غرفة العمليات؟",
+                        answer: "تتراوح أوقات عملية جراحة السمنة بين 30 دقيقة إلى ساعتين."
+                    },
+                    {
+                        question: "هل يجب أن أكون بصحة جيدة حتى أتمكن من الخضوع للجراحة؟",
+                        answer: "يعاني العديد من مرضى السمنة المفرطة من سوء الصحة بسبب الأمراض الناجمة عن السمنة وتشمل هذه الأمراض مرض السكري وارتفاع ضغط الدم ومشاكل القلب ومشاكل الرئة وصعوبات الكلى، يجب أن يكون المرضى مؤهلين طبياً وأن يكونوا قادرين على الخضوع للتخدير العام."
+                    },
+                    {
+                        question: "كيف أعرف الإجراء الأفضل بالنسبة لي؟",
+                        answer: "تتم مناقسة كل إجراء بالتفصيل في جلساتنا الإرشادية، حتى تتمكن من محاولة تحديد الإجراء المناسب لك كما ستناقش هذه الإجراءات مع الجراح في استشارتك الأولية."
+                    }
+                ]
+            },
+            blog: {
+                title: "المدونة وآخر المقالات",
+                subTitle: "اقرأ مقالاتنا المميزة الآن",
+                desc: "اطلع على أسرار نجاح جراحات السمنة، تصفح مقالاتنا الآن وابدأ رحلتك نحو حياة أكثر صحة وثقة.",
+                items: [
+                    {
+                        titleBlog: "تجلط الأوردة العميقة",
+                        description: "هي حالة طبية خطيرة تحدث عندما تتشكل جلطة دموية في الأوردة العميقة، غالبًا تكون في الأطراف السفلية مثل...",
+                        image: "/assets/img/blog/1.webp",
+                        slug: "تجلط-الأوردة-العميقة"
+                    }
+                ],
+                btn: "المزيد من المقالات"
+            }
+        },
+        en: {
+            hero: {
+                title: "Bariatric Surgery: Your Way to Fitness and Beauty",
+                desc: "Bariatric surgery is the ideal choice to achieve fitness and beauty in a safe and effective way. Thanks to advanced techniques and specialized medical supervision, you can now get rid of excess weight and enjoy a healthier and more vibrant life.",
+                btn1: "Book an Appointment",
+                btn2: "Types of Bariatric Surgeries"
+            },
+            about: {
+                title: "A Career Rich in Experience and Achievements",
+                sub: "Dr. Abdullah bin Musaed AlMunifi, A History of Creativity and Excellence",
+                btn: "Discover Details Now"
+            },
+            mission: {
+                title: "Unique Advantages",
+                sub: "Discover the benefits of bariatric surgery and start your journey towards change",
+                desc: "Bariatric surgery offers a variety of benefits for those suffering from obesity, including improved health, increased mobility, and enhanced self-esteem, in addition to:",
+                cards: [
+                    {
+                        icon: "fi fi-rr-doctor",
+                        title: "Health Promotion and Prevention",
+                        sub: "Reducing chronic health risks and achieving a healthier life."
+                    },
+                    {
+                        icon: "fi fi-rr-muscle",
+                        title: "Restoring Activity and Vitality",
+                        sub: "Increasing mobility and enjoying high daily energy."
+                    },
+                    {
+                        icon: "fi fi-rr-user-trust",
+                        title: "Boosting Self-Confidence",
+                        sub: "Changing appearance and increasing self-satisfaction."
+                    },
+                    {
+                        icon: "fi fi-rr-head-side-medical",
+                        title: "Achieving Psychological Stability",
+                        sub: "Relieving stress and achieving better psychological balance."
+                    }
+                ]
+            },
+            importance: {
+                title: "Importance of Bariatric Surgery",
+                sub: "The role of bariatric surgery in improving health",
+                desc: "Weight loss surgery not only treats obesity but also other conditions such as diabetes, heart disease, high blood pressure, arthritis, and acid reflux. In addition, surgery significantly reduces the risk of death from cancer, diabetes, heart disease, and other diseases.",
+                cards: [
+                    {
+                        icon: "fi fi-rr-heart-rate",
+                        title: "Improving Heart Health",
+                        sub: "Reducing blood pressure and cholesterol to improve heart health."
+                    },
+                    {
+                        icon: "fi fi-rr-arrow-comparison",
+                        title: "Increasing Oxygen Flow",
+                        sub: "Improving oxygen delivery to tissues and muscles."
+                    },
+                    {
+                        icon: "fi fi-rr-laptop-medical",
+                        title: "Supporting Arterial Health",
+                        sub: "Reducing fat accumulation and providing smooth blood flow."
+                    },
+                    {
+                        icon: "flaticon-laboratory",
+                        title: "Lowering Harmful Lipid Levels",
+                        sub: "Reducing saturated fats and LDL cholesterol to improve heart health."
+                    }
+                ]
+            },
+            videoGallery: {
+                title: "Featured Video Collection",
+                subTitle: "Specialized Bariatric Surgery Content",
+                desc: "Explore everything you need to know about bariatric surgery through our featured videos!",
+                videos: [
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/2.webp" },
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
+                    { id: "kVbs8IwkqIk", thumbnail: "/assets/img/video-thumbnails/2.webp" }
+                ],
+                btn: "More Videos"
+            },
+            photoGallery: {
+                title: "A Health Journey Starts with a Step and a Decision",
+                subTitle: "Your Guide to a Better Healthy Life",
+                desc: "Start now because your health deserves a new beginning",
+                items: [
+                    { pdf: "/assets/img/Infographic/01.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 01.webp" },
+                    { pdf: "/assets/img/Infographic/03.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 03.webp" },
+                    { pdf: "/assets/img/Infographic/04.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 04.webp" },
+                    { pdf: "/assets/img/Infographic/05.pdf", thumb: "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 05.webp" }
+                ]
+            },
+            bmiCalculator: {
+                title: "Body Mass Index (BMI) | Your Guide to Better Understanding Your Weight and Health",
+                subTitle: "Quickly discover your health status using BMI",
+                desc: "BMI is calculated using your weight and height (weight divided by height squared), along with many other factors such as blood pressure and cholesterol. BMI can help estimate the risk of heart attack or stroke.",
+                heightLabel: "Enter your height (cm)",
+                weightLabel: "Enter your weight (kg)",
+                btn: "Calculate",
+                tableTitle: "Mass Index Sections",
+                categories: [
+                    { range: "Less than 18.5", label: "Underweight" },
+                    { range: "18.5 to 24.9", label: "Healthy Weight" },
+                    { range: "25 to 29.9", label: "Overweight" },
+                    { range: "30 to 34.9", label: "Class I Obesity" },
+                    { range: "35 to 39.9", label: "Class II Obesity" },
+                    { range: "40 or more", label: "Class III Obesity" }
+                ],
+                note: "Note: The index table remains constant",
+                resultTitle: "Result",
+                yourBmi: "Your BMI:",
+                statusLabel: {
+                    underweight: "Underweight",
+                    healthy: "Healthy",
+                    overweight: "Overweight",
+                    obese: "Obese"
+                }
+            },
+            operations: {
+                title: "Bariatric Surgeries",
+                subTitle: "Discover the latest types of bariatric surgery and start your health transformation journey",
+                desc: "Browse all types of bariatric surgery and learn all the details about each option!",
+                items: [
+                    {
+                        title: "Sleeve Gastrectomy",
+                        description: "Gastric sleeve is one of the most common bariatric surgeries in the world and is characterized by its high effectiveness in losing weight by removing a part...",
+                        cardImage: "/assets/img/icons/تكميم المعدة.webp",
+                        slug: "Sleeve-Gastrectomy"
+                    },
+                    {
+                        title: "Cholecystectomy",
+                        description: "Cholecystectomy is a surgical procedure used to remove the gallbladder when stones form that cause pain or recurrent infections.",
+                        cardImage: "/assets/img/icons/ربط المعدة.webp",
+                        slug: "Cholecystectomy"
+                    },
+                    {
+                        title: "Mini Gastric Bypass",
+                        description: "Mini gastric bypass is a simpler procedure than traditional gastric bypass but provides similar weight loss results and is done in...",
+                        cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
+                        slug: "Mini-Gastric-Bypass"
+                    }
+                ],
+                btn: "Check out other surgery options",
+                readMore: "Read More"
+            },
+            faq: {
+                subTitle: "Frequently Asked Questions",
+                title: "Learn Everything You Need to Know About Bariatric Surgery!",
+                items: [
+                    {
+                        question: "Who is not suitable for weight loss surgery?",
+                        answer: "Individuals who do not meet the BMI criteria are usually not suitable for bariatric surgery. Someone may meet the BMI criteria, but after meeting with the surgeon, it can be determined that the individual risks are greater than the potential benefit of surgery. These situations are rare and are discussed individually with your care team."
+                    },
+                    {
+                        question: "How much does bariatric surgery cost?",
+                        answer: "The costs of the procedure depend on the patient, the surgery, and any difficulties that may occur after surgery. In many cases, insurance companies cover the cost of surgery because morbid obesity can be a life-threatening condition. You should talk with your insurance company to ensure surgery and any related expenses are covered."
+                    },
+                    {
+                        question: "Can surgery be performed laparoscopically even if I have had open abdominal surgery before?",
+                        answer: "The surgeon will evaluate you on an individual basis. It is possible to perform laparoscopic gastric bypass surgery after open abdominal surgery or other laparoscopic abdominal procedures. Our surgeons believe that every patient has the right to have the opportunity to choose the least invasive surgery as an option."
+                    },
+                    {
+                        question: "What happens to the stomach, does it shrink?",
+                        answer: "The remaining stomach becomes smaller over time because it no longer expands with food and drink, but it still performs an essential purpose in producing stomach acid and enzymes to help you digest food."
+                    },
+                    {
+                        question: "How long will I stay in the operating room?",
+                        answer: "Bariatric surgery times range from 30 minutes to two hours."
+                    },
+                    {
+                        question: "Do I have to be in good health to be able to undergo surgery?",
+                        answer: "Many morbidly obese patients suffer from poor health due to obesity-related diseases, including diabetes, high blood pressure, heart problems, lung problems, and kidney difficulties. Patients must be medically qualified and able to undergo general anesthesia."
+                    },
+                    {
+                        question: "How do I know which procedure is best for me?",
+                        answer: "Each procedure is discussed in detail in our counseling sessions, so you can try to determine the right procedure for you, and these procedures will also be discussed with the surgeon in your initial consultation."
+                    }
+                ]
+            },
+            feedback: {
+                title: "Our Customer Opinions",
+                subTitle: "Ratings that reflect our excellence",
+                desc: "Discover real experiences from our customers who chose their journey of transformation with us, honest opinions reflecting their successes and confidence in our care.",
+                items: [
+                    {
+                        name: "Raneem Al-Atique",
+                        feedback: "Excellent service, commitment to appointments, and great attention to detail. Thank you for the quality of work",
+                        image: "/assets/img/client-image/1.png"
+                    },
+                    {
+                        name: "Abdulaziz Al-Qahtani",
+                        feedback: "Good luck with the excellent work. Cleanliness, accuracy, and full commitment to the appointment. Thank you.",
+                        image: "/assets/img/client-image/2.png"
+                    }
+                ]
+            },
+            blog: {
+                title: "Blog and Latest Articles",
+                subTitle: "Read our featured articles now",
+                desc: "Discover the secrets of success in bariatric surgeries, browse our articles now and start your journey towards a healthier and more confident life.",
+                items: [
+                    {
+                        titleBlog: "Deep Vein Thrombosis (DVT)",
+                        description: "It is a serious medical condition that occurs when a blood clot forms in the deep veins, often in the lower extremities such as...",
+                        image: "/assets/img/blog/1.webp",
+                        slug: "/تجلط-الأوردة-العميقة"
+                    }
+                ],
+                btn: "More Articles"
+            }
+        }
+    },
     navbar: {
         ar: {
             phone: "+966 53 519 5519",

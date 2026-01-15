@@ -8,7 +8,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { translations } from '@/context/translation'
 
 const Navbar = () => {
-    const { language, setLanguage } = useLanguage();
+    const { language, toggleLanguage } = useLanguage();
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
@@ -30,8 +30,7 @@ const Navbar = () => {
     const t = translations.navbar[language] || translations.navbar.ar;
 
     const handleLanguageChange = () => {
-        const newLanguage = language === 'ar' ? 'en' : 'ar';
-        setLanguage(newLanguage);
+        toggleLanguage();
     };
 
     const toggleMenu = () => {
@@ -160,10 +159,10 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="d-block d-lg-none nav-item">
-                                        <Link className="nav-link" href={t.langLink} onClick={() => { handleLanguageChange(); setIsMenuOpen(false); }}>
+                                        <div className="nav-link" style={{ cursor: 'pointer' }} onClick={() => { handleLanguageChange(); setIsMenuOpen(false); }}>
                                             <Image src={t.langFlag} alt="flag" width={20} height={20} />
                                             <span style={{ marginLeft: language === 'ar' ? '0' : '8px', marginRight: language === 'ar' ? '8px' : '0' }}>{t.langSwitch}</span>
-                                        </Link>
+                                        </div>
                                     </li>
 
                                     <li className="d-block d-lg-none w-fit-content nav-item">
@@ -172,9 +171,9 @@ const Navbar = () => {
                                 </ul>
 
                                 <div className="others-options">
-                                    <Link href={t.langLink} onClick={handleLanguageChange}>
+                                    <div style={{ cursor: 'pointer', display: 'inline-block', marginInlineEnd: '15px' }} onClick={handleLanguageChange}>
                                         <Image src={t.langFlag} alt="flag" width={20} height={20} />
-                                    </Link>
+                                    </div>
                                     <Link href={t.contactLink} className="btn btn-primary">{t.consultation}</Link>
                                 </div>
                             </div>

@@ -48,22 +48,22 @@ const BlogDetailsPage = async ({ params }) => {
                                     <ul className='features-list'>
                                         <li>
                                             <a href="https://www.heart.org/" target="_blank">
-                                                <i class="flaticon-check-mark"></i> American Heart Association (AHA) - www.heart.org
+                                                <i className="flaticon-check-mark"></i> American Heart Association (AHA) - www.heart.org
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.nih.gov/" target="_blank">
-                                                <i class="flaticon-check-mark"></i> National Institutes of Health (NIH) - www.nih.gov
+                                                <i className="flaticon-check-mark"></i> National Institutes of Health (NIH) - www.nih.gov
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.who.int" target="_blank">
-                                                <i class="flaticon-check-mark"></i> World Health Organization (WHO) - www.who.int
+                                                <i className="flaticon-check-mark"></i> World Health Organization (WHO) - www.who.int
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.mayoclinic.org/" target="_blank">
-                                                <i class="flaticon-check-mark"></i> Mayo Clinic - www.mayoclinic.org
+                                                <i className="flaticon-check-mark"></i> Mayo Clinic - www.mayoclinic.org
                                             </a>
                                         </li>
                                     </ul>

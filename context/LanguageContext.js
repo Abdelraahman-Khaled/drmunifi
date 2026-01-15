@@ -8,21 +8,19 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
     const [language, setLanguage] = useState(initialLanguage);
 
     useEffect(() => {
-        // Simple URL detection
-        if (typeof window !== 'undefined') {
-            const isEn = window.location.pathname.startsWith('/en');
-            if (isEn && language !== 'en') {
-                setLanguage('en');
-            } else if (!isEn && language !== 'ar') {
-                setLanguage('ar');
-            }
+        const savedLang = localStorage.getItem('appLang');
+        if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
+            setLanguage(savedLang);
         }
     }, []);
-
+    1
     useEffect(() => {
         // Update HTML attributes
         document.documentElement.lang = language;
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+
+        // Persist language choice
+        localStorage.setItem('appLang', language);
 
         // Update body class for legacy scripts (like main.js)
         if (language === 'ar') {

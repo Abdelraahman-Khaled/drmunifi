@@ -19,7 +19,7 @@ const FeaturesSection = ({ title, subTitle, desc, list, cards, className }) => {
                     cards.map((item, index) => (
                         <li key={index}>
                             <div className="icon">
-                                <i className="flaticon-doctor"></i>
+                                <i className={item.icon || "flaticon-doctor"}></i>
                             </div>
                             <span>{item.title}</span>
                             {item.sub}
