@@ -38,13 +38,28 @@ const BlogDetailContent = ({ blog }) => {
         router.replace(`${basePath}/${targetSlug}`, { scroll: false });
     }, [language, blog, router]);
 
+    // Helper to format content: add features-list class to uls, and checkmark icon to lis
+    const formatContent = (htmlContent) => {
+        if (!htmlContent) return "";
+        let formatted = htmlContent;
+        // Add class 'features-list' to all <ul> tags if not already present
+        formatted = formatted.replace(/<ul(?![^>]*class=["'][^"']*features-list[^"']*["'])([^>]*)>/gi, '<ul class="features-list" $1>');
+
+        // Add checkmark icon to start of <li> if not already present
+        // We use a simple regex replacing <li> with <li><i class="..."></i>
+        // Ensure we don't add it if it's already there to avoid duplication on re-renders if content is stateful (though here it's prop-based)
+        formatted = formatted.replace(/<li>(?!<i class="flaticon-check-mark"><\/i>)/gi, '<li><i class="flaticon-check-mark"></i> ');
+
+        return formatted;
+    };
+
     // Render Logic
     const renderContent = () => {
         if (blog.contents && Array.isArray(blog.contents)) {
             return blog.contents.map((section, index) => (
                 <div key={index} className="blog-section mb-4">
                     {/* Section Content */}
-                    <div dangerouslySetInnerHTML={{ __html: language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar) }} />
+                    <div dangerouslySetInnerHTML={{ __html: formatContent(language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar)) }} />
 
                     {/* Section Images */}
                     {section.photos && section.photos.length > 0 && (
@@ -69,7 +84,7 @@ const BlogDetailContent = ({ blog }) => {
             ));
         } else {
             // Fallback for simple content
-            return <div dangerouslySetInnerHTML={{ __html: language === 'ar' ? (blog.content_ar || blog.content) : (blog.content_en || blog.content) }} />;
+            return <div dangerouslySetInnerHTML={{ __html: formatContent(language === 'ar' ? (blog.content_ar || blog.content) : (blog.content_en || blog.content)) }} />;
         }
     };
 

@@ -26645,9 +26645,9 @@ FAQ Area CSS
   margin-bottom: 10px;
 }
 
-.faq-accordion .accordion .accordion-item:last-child {
+/* .faq-accordion .accordion .accordion-item:last-child {
   margin-bottom: 0;
-}
+} */
 
 .faq-accordion .accordion .accordion-title {
   padding: 12px 20px 12px 51px;

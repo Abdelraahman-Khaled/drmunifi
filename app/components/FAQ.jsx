@@ -47,7 +47,7 @@ const FAQ = ({ items }) => {
                                 transitionProperty: 'max-height, padding, opacity'
                             }}
                         >
-                            <div className="mb-0" dangerouslySetInnerHTML={{ __html: language === 'ar' ? item.answer_ar : item.answer_en }} />
+                            <div className="mb-0 px-1" dangerouslySetInnerHTML={{ __html: language === 'ar' ? item.answer_ar : item.answer_en }} />
                         </div>
                     </li>
                 ))}
