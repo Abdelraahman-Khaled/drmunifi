@@ -25,12 +25,12 @@ const HomeAbout = () => {
                     />
                 </div>
                 <div className="col-lg-6 col-md-12">
-                    <div className="about-content">
+                    <div className="about-content ">
                         <FeaturesSection
                             title={homeT.title}
                             subTitle={homeT.sub}
                             list={t.skillsList.slice(0, 7)} // Display first 7 skills on home page
-                            className="about-content"
+                            className=""
                         />
 
                         <Link href={isAr ? "/about" : "/en/about"} className="btn btn-primary">

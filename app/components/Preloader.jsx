@@ -42,7 +42,7 @@ const Preloader = () => {
     if (!render) return null;
 
     return (
-        <div className="preloader">
+        <div className={`preloader ${!loading ? 'loaded' : ''}`}>
             <div className="loading-container">
                 <div className="loading"></div>
                 <div id="loading-icon">
