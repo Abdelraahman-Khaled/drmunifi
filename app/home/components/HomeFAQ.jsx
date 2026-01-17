@@ -1,13 +1,16 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 import { translations } from '@/context/translation'
+import FAQ from '@/app/components/FAQ'
+import { getFaqs } from '@/app/api/FAQ'
 
 const HomeFAQ = () => {
     const { language } = useLanguage();
     const t = translations.home[language].faq;
     const [activeIndex, setActiveIndex] = useState(0);
+    const [faqs, setFaqs] = useState([]);
 
     const toggleAccordion = (index) => {
         if (activeIndex === index) {
@@ -17,9 +20,23 @@ const HomeFAQ = () => {
         }
     };
 
+    useEffect(() => {
+        const fetchFaqs = async () => {
+            try {
+                const data = await getFaqs();
+                if (data) {
+                    setFaqs(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch faqs:", error);
+            }
+        };
+        fetchFaqs();
+    }, []);
+
     return (
         // Matching indexx.html structure line 775
-        <section className="faq-area">
+        <section className="faq-area ">
             <div className="container-fluid p-0">
                 <div className="row m-0">
                     <div className="col-lg-6 col-md-12 p-0">
@@ -39,7 +56,8 @@ const HomeFAQ = () => {
                             <span className="sub-title">{t.subTitle}</span>
                             <h2>{t.title}</h2>
 
-                            <ul className="accordion">
+                            <FAQ items={faqs} />
+                            {/* <ul className="accordion">
                                 {t.items.map((item, index) => (
                                     <li className="accordion-item" key={index}>
                                         <a
@@ -71,7 +89,7 @@ const HomeFAQ = () => {
                                         </div>
                                     </li>
                                 ))}
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>

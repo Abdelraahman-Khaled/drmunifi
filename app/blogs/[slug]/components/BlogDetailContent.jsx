@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { useLanguage } from '@/context/LanguageContext';
 import HeroSection from '@/app/components/HeroSection';
 import ScrollTicker from '@/app/components/ScrollTicker';
+import FAQ from '@/app/components/FAQ';
 
 const BlogDetailContent = ({ blog }) => {
     const { language } = useLanguage();
@@ -31,7 +32,7 @@ const BlogDetailContent = ({ blog }) => {
         // Adjust prefix based on language.
         // If switching to 'en', prefix /en/blogs/
         // If switching to 'ar', prefix /blogs/
-        const basePath = language === 'ar' ? '/blogs' : '/en/blogs';
+        const basePath = language === 'ar' ? '/blogs' : '/blogs';
 
         // Use replace to change URL without scroll
         router.replace(`${basePath}/${targetSlug}`, { scroll: false });
@@ -98,6 +99,9 @@ const BlogDetailContent = ({ blog }) => {
                                 <div className="article-content mt-4">
                                     {/* Use the render helper */}
                                     {renderContent()}
+                                    {blog && blog.faqs && Array.isArray(blog.faqs) && blog.faqs.length > 0 && (
+                                        <FAQ items={blog.faqs} />
+                                    )}
                                 </div>
                             </div>
                         </div>
