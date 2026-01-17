@@ -1,80 +1,93 @@
 import React from 'react'
-import Image from 'next/image'
-import { blogsData } from '@/app/data/blogsData'
-import HeroSection from '@/app/components/HeroSection'
-import ScrollTicker from '@/app/components/ScrollTicker';
+import { getBlogDetails } from '@/app/api/blog';
+import BlogDetailContent from './components/BlogDetailContent';
+import { cookies } from 'next/headers';
 
-export async function generateStaticParams() {
-    return blogsData.map((blog) => ({
-        slug: blog.slug,
-    }));
+export const dynamic = 'force-dynamic';
+
+// Helper to fetch data with resilient slug handling
+async function getBlog(slug) {
+    try {
+        // 1. Try with the original slug
+        let data = await getBlogDetails(slug);
+        console.log(data);
+
+        if (data && data.id) return data;
+
+        // 2. If it has hyphens, try replacing them with spaces
+        if (slug.includes('-')) {
+            const spaceSlug = slug.replace(/-/g, ' ');
+            data = await getBlogDetails(spaceSlug);
+            console.log(data);
+
+            if (data && data.id) return data;
+        }
+
+        // 3. If it has spaces, try replacing them with hyphens
+        if (slug.includes(' ')) {
+            const hyphenSlug = slug.replace(/ /g, '-');
+            data = await getBlogDetails(hyphenSlug);
+
+            if (data && data.id) return data;
+        }
+
+        return null;
+    } catch (error) {
+        console.error(`Error fetching blog "${slug}":`, error.message);
+        return null;
+    }
 }
 
-const BlogDetailsPage = async ({ params }) => {
-    const { slug } = await params;
-    const blog = blogsData.find((b) => b.slug === decodeURIComponent(slug));
+export async function generateMetadata({ params }) {
+    const { slug: encodedSlug } = await params;
+    const slug = decodeURIComponent(encodedSlug);
+    const blog = await getBlog(slug);
 
-    if (!blog) {
-        return (
-            <div className="ptb-100 text-center">
-                <h2>Blog post not found</h2>
-            </div>
-        );
+    if (!blog) return {};
+
+    const cookieStore = await cookies();
+    const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
+
+    const title = language === 'ar'
+        ? (blog.meta_title_ar || blog.title_ar)
+        : (blog.meta_title_en || blog.title_en);
+
+    const description = language === 'ar'
+        ? (blog.meta_description_ar || blog.description_ar)
+        : (blog.meta_description_en || blog.description_en);
+
+    return {
+        title: `Dr Al Munifi | ${title}`,
+        description,
+        icons: {
+            icon: '/images/icons/favicon.ico',
+            shortcut: '/images/icons/favicon.ico',
+        },
+        openGraph: {
+            title: "Dr Al Munifi" | title,
+            description,
+            images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
+        },
+        alternates: {
+            canonical: `/blog/${blog.slug}`,
+            languages: {
+                ar: `/blog/${blog.slug_ar}`,
+                en: `/blog/${blog.slug}`,
+            }
+        }
     }
+}
+
+export default async function BlogDetailsPage({ params }) {
+    const { slug: encodedSlug } = await params;
+    const slug = decodeURIComponent(encodedSlug);
+    const blog = await getBlog(slug);
+    if (!blog) notFound();
 
     return (
         <>
-            <HeroSection title={blog.title} subTitle={"المدونة"} subTitleLink="/blogs" number={2} />
-            <ScrollTicker />
-            <section className="blog-details-area ptb-100">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="blog-details-desc">
-                                <div className="article-image">
-                                    <Image
-                                        className=' rounded-5'
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        width={1200}
-                                        height={600}
-                                    />
-                                </div>
-
-                                <div className="article-content">
-                                    <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-
-                                    <h3 className="mt-5">{blog.language === 'ar' ? 'المصادر العلمية:' : 'Scientific Sources:'}</h3>
-                                    <ul className='features-list'>
-                                        <li>
-                                            <a href="https://www.heart.org/" target="_blank">
-                                                <i className="flaticon-check-mark"></i> American Heart Association (AHA) - www.heart.org
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.nih.gov/" target="_blank">
-                                                <i className="flaticon-check-mark"></i> National Institutes of Health (NIH) - www.nih.gov
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.who.int" target="_blank">
-                                                <i className="flaticon-check-mark"></i> World Health Organization (WHO) - www.who.int
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.mayoclinic.org/" target="_blank">
-                                                <i className="flaticon-check-mark"></i> Mayo Clinic - www.mayoclinic.org
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <BlogDetailContent blog={blog} />
         </>
     )
 }
 
-export default BlogDetailsPage;

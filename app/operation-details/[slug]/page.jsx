@@ -1,61 +1,95 @@
 import React from 'react'
-import Image from 'next/image'
-import { operationsData } from '@/app/data/operationsData'
-import HeroSection from '@/app/components/HeroSection'
-import ScrollTicker from '@/app/components/ScrollTicker';
+import { getOperationDetails } from '@/app/api/operations';
+import { cookies } from 'next/headers';
 
-export async function generateStaticParams() {
-    return operationsData.map((operation) => ({
-        slug: operation.slug,
-    }));
+
+async function getOperation(slug) {
+    try {
+        // 1. Try with the original slug
+        let data = await getOperationDetails(slug);
+        console.log(data);
+
+        if (data && data.id) return data;
+
+        // 2. If it has hyphens, try replacing them with spaces
+        if (slug.includes('-')) {
+            const spaceSlug = slug.replace(/-/g, ' ');
+            data = await getOperationDetails(spaceSlug);
+            console.log(data);
+
+            if (data && data.id) return data;
+        }
+
+        // 3. If it has spaces, try replacing them with hyphens
+        if (slug.includes(' ')) {
+            const hyphenSlug = slug.replace(/ /g, '-');
+            data = await getOperationDetails(hyphenSlug);
+
+            if (data && data.id) return data;
+        }
+
+        return null;
+    } catch (error) {
+        console.error(`Error fetching blog "${slug}":`, error.message);
+        return null;
+    }
 }
 
+export async function generateMetadata({ params }) {
+    const { slug: encodedSlug } = await params;
+    const slug = decodeURIComponent(encodedSlug);
+    const blog = await getOperation(slug);
+
+    if (!blog) return {};
+
+    const cookieStore = await cookies();
+    const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
+
+    const title = language === 'ar'
+        ? (blog.meta_title_ar || blog.title_ar)
+        : (blog.meta_title_en || blog.title_en);
+
+    const description = language === 'ar'
+        ? (blog.meta_description_ar || blog.description_ar)
+        : (blog.meta_description_en || blog.description_en);
+
+    return {
+        title: `Dr Al Munifi | ${title}`,
+        description,
+        icons: {
+            icon: '/images/icons/favicon.ico',
+            shortcut: '/images/icons/favicon.ico',
+        },
+        openGraph: {
+            title: "Dr Al Munifi" | title,
+            description,
+            images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
+        },
+        alternates: {
+            canonical: `/blog/${blog.slug}`,
+            languages: {
+                ar: `/blog/${blog.slug_ar}`,
+                en: `/blog/${blog.slug}`,
+            }
+        }
+    }
+}
+
+import OperationDetailContent from './components/OperationDetailContent';
+import { notFound } from 'next/navigation';
+
 const OperationDetailsPage = async ({ params }) => {
-    const { slug } = await params;
-    const operation = operationsData.find((o) => o.slug === decodeURIComponent(slug));
+    const { slug: encodedSlug } = await params;
+    const slug = decodeURIComponent(encodedSlug);
+    const operation = await getOperation(slug);
 
     if (!operation) {
-        return (
-            <div className="ptb-100 text-center">
-                <h2>Operation not found</h2>
-            </div>
-        );
+        notFound();
     }
-
-    const isAr = operation.language === 'ar';
 
     return (
         <>
-            <HeroSection
-                title={operation.title}
-                subTitle={isAr ? "أنواع جراحات السمنة" : "Types of Bariatric Surgeries"}
-                subTitleLink="/types-of-operations"
-                number={2}
-            />
-            <ScrollTicker />
-            <section className="services-details-area ptb-100">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="services-details-desc">
-                                <div className="services-details-image">
-                                    <Image
-                                        src={operation.image}
-                                        alt={operation.title}
-                                        width={1200}
-                                        height={600}
-                                        priority
-                                    />
-                                </div>
-
-                                <h1>{operation.title}</h1>
-
-                                <div dangerouslySetInnerHTML={{ __html: operation.content }} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <OperationDetailContent operation={operation} />
         </>
     )
 }

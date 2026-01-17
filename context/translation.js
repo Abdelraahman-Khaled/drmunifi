@@ -676,5 +676,29 @@ export const translations = {
             phoneLabel: "Phone",
             success: "Your message has been sent successfully!"
         }
+    },
+    blogsPage: {
+        ar: {
+            all_articles: "جميع المقالات",
+            branding_and_identity: "الهوية والعلامة التجارية",
+            web_design_label: "تصميم المواقع",
+            graphic_design_label: "التصميم الجرافيكي",
+            digital_marketing_label: "التسويق الرقمي",
+            e_commerce_label: "التجارة الإلكترونية",
+            loading_articles: "جاري تحميل المقالات...",
+            no_articles_found: "لا توجد مقالات لعرضها حالياً.",
+            read_article: "اقرأ المزيد"
+        },
+        en: {
+            all_articles: "All Articles",
+            branding_and_identity: "Branding & Identity",
+            web_design_label: "Web Design",
+            graphic_design_label: "Graphic Design",
+            digital_marketing_label: "Digital Marketing",
+            e_commerce_label: "E-Commerce",
+            loading_articles: "Loading articles...",
+            no_articles_found: "No articles found.",
+            read_article: "Read More"
+        }
     }
 };
