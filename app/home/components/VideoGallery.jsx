@@ -36,7 +36,7 @@ const VideoGallery = () => {
                             >
                                 <a
                                     href="#!"
-                                    className="popup-video"
+                                    className="d-block"
                                     onClick={(e) => openVideo(e, video.id)}
                                 >
                                     <figure>
@@ -75,7 +75,7 @@ const VideoGallery = () => {
                     style={{ zIndex: 1050 }}
                     onClick={closeVideo}
                 >
-                    <div className="video-container position-relative w-75 h-75">
+                    <div className="video-container position-relative" style={{ width: '90%', height: '90%' }}>
                         <button
                             className="btn-close btn-close-white position-absolute top-0 end-0 m-3"
                             onClick={closeVideo}

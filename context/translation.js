@@ -71,10 +71,10 @@ export const translations = {
                 subTitle: "محتوى متخصص بجراحة السمنة",
                 desc: "استكشف كل ما تحتاج معرفته عن جراحة السمنة من خلال فيديوهاتنا المميزة!",
                 videos: [
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/2.webp" },
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
-                    { id: "kVbs8IwkqIk", thumbnail: "/assets/img/video-thumbnails/2.webp" }
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.webp" },
+                    { id: "YnrpmQZW5Lg", thumbnail: "/assets/img/video-thumbnails/2.webp" },
+                    { id: "kJTCqX6qOxI", thumbnail: "/assets/img/video-thumbnails/3.webp" },
+                    { id: "J10W0lyzJOo", thumbnail: "/assets/img/video-thumbnails/4.webp" }
                 ],
                 btn: "مزيد من الفيديوهات"
             },
