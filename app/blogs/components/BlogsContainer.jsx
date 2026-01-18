@@ -58,7 +58,7 @@ const BlogsContainer = () => {
                 {/* Filter Section - Uncomment if needed, currently hiding as per typical requirement, or keep if requested. 
             User provided code had it. Keeping it. 
         */}
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-lg-12 col-md-12">
                         <div className="our-Project-nav">
                             <ul>
@@ -78,7 +78,7 @@ const BlogsContainer = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="row">
                     {loading ? (
