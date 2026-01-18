@@ -1,16 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* images: {
+  images: {
     unoptimized: true,
-  }, */
-
-   images: {
-    domains: [
-      'http://backend.almunifi.com',
-     
-    ],
   },
-
 };
 
 export default nextConfig;
