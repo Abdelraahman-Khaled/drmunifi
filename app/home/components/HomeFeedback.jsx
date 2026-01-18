@@ -147,12 +147,12 @@ const HomeFeedback = () => {
                         </div>
 
                         {/* Arrows are here inside .client-feedback, matching indexx.html */}
-                        <button className="next-arrow slick-arrow">
-                            <i className={language === 'ar' ? 'flaticon-left-arrow' : 'flaticon-arrow-pointing-to-right'}></i>
-                        </button>
-
                         <button className="prev-arrow slick-arrow">
                             <i className={language === 'ar' ? 'flaticon-arrow-pointing-to-right' : 'flaticon-left-arrow'}></i>
+                        </button>
+
+                        <button className="next-arrow slick-arrow">
+                            <i className={language === 'ar' ? 'flaticon-left-arrow' : 'flaticon-arrow-pointing-to-right'}></i>
                         </button>
 
                     </div>

@@ -27,9 +27,9 @@ const VideoGallery = () => {
                     <p>{t.desc}</p>
                 </div>
 
-                <div className="row">
+                <div className="row justify-content-center">
                     {t.videos.map((video, index) => (
-                        <div className="col-lg-3 col-md-6 mb-4" key={index}>
+                        <div className="col-lg-3 col-md-6 mb-4 d-flex justify-content-center" key={index}>
                             <div
                                 className="video-gallery-image"
                                 data-cursor-text={language === 'ar' ? 'تشغيل' : 'Play'}
@@ -75,21 +75,21 @@ const VideoGallery = () => {
                     style={{ zIndex: 1050 }}
                     onClick={closeVideo}
                 >
-                    <div className="video-container position-relative" style={{ width: '90%', height: '90%' }}>
+                    <div className="video-container position-relative" style={{ width: '90%', maxWidth: '900px' }}>
                         <button
                             className="btn-close btn-close-white position-absolute top-0 end-0 m-3"
                             onClick={closeVideo}
                             style={{ zIndex: 1060 }}
                         ></button>
-                        <iframe
-                            width="100%"
-                            height="100%"
-                            src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
+                        <div className="ratio ratio-16x9">
+                            <iframe
+                                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             )}

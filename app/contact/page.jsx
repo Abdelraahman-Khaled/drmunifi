@@ -14,7 +14,7 @@ const ContactPage = () => {
             <HeroSection
                 title={isAr ? "تواصل معنا" : "Contact Us"}
                 subTitle={isAr ? "الرئيسية" : "Home"}
-                subTitleLink={isAr ? "/" : "/en"}
+                subTitleLink={"/"}
                 number={1}
             />
             <ScrollTicker />

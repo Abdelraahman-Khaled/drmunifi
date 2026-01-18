@@ -220,6 +220,9 @@ body {
     padding-right: 0;
 }
 
+.blog-details-desc strong {
+    color: #000;
+}
 .blog-details-desc .article-content .wp-block-gallery.columns-3 {
     padding-right: 0;
 }
@@ -232,10 +235,19 @@ body {
     padding-left: initial;
     padding-right: 34px;
 }
+[dir = "ltr"] .blog-details-desc .article-content .features-list li {
+    padding-left: 34px;
+    padding-right: initial;
+}
 
 .blog-details-desc .article-content .features-list li i {
     right: 0;
     left: initial;
+}
+
+[dir="ltr"] .blog-details-desc .article-content .features-list li i {
+    left: 0;
+    right: initial;
 }
 
 blockquote::before,
@@ -248,10 +260,16 @@ blockquote::after,
     right: 0;
     left: initial;
 }
-
+.services-details-desc strong {
+    color: #000;
+}
 .services-details-desc .services-features-list li {
     padding-right: 34px;
     padding-left: initial;
+}
+[dir="ltr"] .services-details-desc .services-features-list li {
+    padding-left: 34px;
+    padding-right: initial;
 }
 
 [dir="rtl"] .services-details-desc .services-features-list li i {
@@ -321,10 +339,15 @@ blockquote::after,
 }
 
 @media (max-width: 991px) {
-    .fovia-responsive-nav .mean-container a.meanmenu-reveal {
-        left: 0 !important;
-        right: auto !important;
-    }
+    html[dir="ltr"] .meanmenu-reveal {
+    right: 0 !important;
+    left: auto !important;
+}
+
+html[dir="rtl"] .meanmenu-reveal {
+    left: 0 !important;
+    right: auto !important;
+}
 }
 
 @media only screen and (max-width: 767px) {

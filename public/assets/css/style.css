@@ -24575,8 +24575,6 @@ Header Area CSS
   .fovia-responsive-nav .mean-container a.meanmenu-reveal {
     color: #3dde9e;
     font-size: 30px !important;
-    left: auto !important;
-    right: 0 !important;
   }
 
   .fovia-responsive-nav .mean-container a.meanmenu-reveal span {
@@ -26897,8 +26895,6 @@ Blog Area CSS
 }
 
 .single-blog-post .post-content {
-  background-color: #ffffff;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 25px;
   position: relative;
   z-index: 1;

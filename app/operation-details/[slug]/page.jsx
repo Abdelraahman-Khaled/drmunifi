@@ -75,6 +75,7 @@ export async function generateMetadata({ params }) {
     }
 }
 
+
 import OperationDetailContent from './components/OperationDetailContent';
 import { notFound } from 'next/navigation';
 

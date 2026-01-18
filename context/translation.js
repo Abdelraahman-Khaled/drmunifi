@@ -121,22 +121,22 @@ export const translations = {
                 desc: "استعرض جميع أنواع جراحة السمنة وتعرف على كل التفاصيل المتعلقة بكل خيار!",
                 items: [
                     {
-                        title: "تكميم المعدة",
-                        description: "تكميم المعدة واحدة من أكثر جراحات السمنة شيوعاً في العالم وتتميز بفعاليتها الكبيرة في إنقاص الوزن ويتم فيها استئصال جزء...",
+                        title_ar: "تكميم المعدة",
+                        description_ar: "تكميم المعدة واحدة من أكثر جراحات السمنة شيوعاً في العالم وتتميز بفعاليتها الكبيرة في إنقاص الوزن ويتم فيها استئصال جزء...",
                         cardImage: "/assets/img/icons/تكميم المعدة.webp",
-                        slug: "تكميم-المعدة"
+                        slug_ar: "تكميم-المعدة"
                     },
                     {
-                        title: "عملية استئصال المرارة",
-                        description: "استئصال المرارة هو إجراء جراحي يُستخدم لإزالة المرارة عند تكوّن الحصوات التي تسبب ألماً أو التهابات متكررة.",
+                        title_ar: "عملية استئصال المرارة",
+                        description_ar: "استئصال المرارة هو إجراء جراحي يُستخدم لإزالة المرارة عند تكوّن الحصوات التي تسبب ألماً أو التهابات متكررة.",
                         cardImage: "/assets/img/icons/ربط المعدة.webp",
-                        slug: "عملية-استئصال-المرارة"
+                        slug_ar: "عملية-استئصال-المرارة"
                     },
                     {
-                        title: "تحويل المسار المصغر",
-                        description: "تحويل المسار المصغر هو إجراء أبسط من تحويل المسار التقليدي ولكنه يوفر نتائج مماثلة في إنقاص الوزن ويتم فيه...",
+                        title_ar: "تحويل المسار المصغر",
+                        description_ar: "تحويل المسار المصغر هو إجراء أبسط من تحويل المسار التقليدي ولكنه يوفر نتائج مماثلة في إنقاص الوزن ويتم فيه...",
                         cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
-                        slug: "تحويل-المسار-المصغر"
+                        slug_ar: "تحويل-المسار-المصغر"
                     }
                 ],
                 btn: "اطلع على خيارات الجراحة الأخرى",
@@ -279,10 +279,10 @@ export const translations = {
                 subTitle: "Specialized Bariatric Surgery Content",
                 desc: "Explore everything you need to know about bariatric surgery through our featured videos!",
                 videos: [
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/2.webp" },
-                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.png" },
-                    { id: "kVbs8IwkqIk", thumbnail: "/assets/img/video-thumbnails/2.webp" }
+                    { id: "4Olc7KZLKEc", thumbnail: "/assets/img/video-thumbnails/1.webp" },
+                    { id: "YnrpmQZW5Lg", thumbnail: "/assets/img/video-thumbnails/2.webp" },
+                    { id: "kJTCqX6qOxI", thumbnail: "/assets/img/video-thumbnails/3.webp" },
+                    { id: "J10W0lyzJOo", thumbnail: "/assets/img/video-thumbnails/4.webp" }
                 ],
                 btn: "More Videos"
             },
@@ -329,20 +329,20 @@ export const translations = {
                 desc: "Browse all types of bariatric surgery and learn all the details about each option!",
                 items: [
                     {
-                        title: "Sleeve Gastrectomy",
-                        description: "Gastric sleeve is one of the most common bariatric surgeries in the world and is characterized by its high effectiveness in losing weight by removing a part...",
+                        title_en: "Sleeve Gastrectomy",
+                        description_en: "Gastric sleeve is one of the most common bariatric surgeries in the world and is characterized by its high effectiveness in losing weight by removing a part...",
                         cardImage: "/assets/img/icons/تكميم المعدة.webp",
                         slug: "Sleeve-Gastrectomy"
                     },
                     {
-                        title: "Cholecystectomy",
-                        description: "Cholecystectomy is a surgical procedure used to remove the gallbladder when stones form that cause pain or recurrent infections.",
+                        title_en: "Cholecystectomy",
+                        description_en: "Cholecystectomy is a surgical procedure used to remove the gallbladder when stones form that cause pain or recurrent infections.",
                         cardImage: "/assets/img/icons/ربط المعدة.webp",
                         slug: "Cholecystectomy"
                     },
                     {
-                        title: "Mini Gastric Bypass",
-                        description: "Mini gastric bypass is a simpler procedure than traditional gastric bypass but provides similar weight loss results and is done in...",
+                        title_en: "Mini Gastric Bypass",
+                        description_en: "Mini gastric bypass is a simpler procedure than traditional gastric bypass but provides similar weight loss results and is done in...",
                         cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
                         slug: "Mini-Gastric-Bypass"
                     }
@@ -434,7 +434,7 @@ export const translations = {
             operationsLink: "/types-of-operations",
             blogLink: "/blogs",
             contactLink: "/contact",
-            langLink: "/en"
+            langLink: "/"
         },
         en: {
             phone: "+966 53 519 5519",
@@ -447,11 +447,11 @@ export const translations = {
             consultation: "Book a Consultation",
             langSwitch: "العربية",
             langFlag: "/assets/img/saudi-arabia.png",
-            homeLink: "/en",
-            aboutLink: "/en/about",
-            operationsLink: "/en/types-of-operations",
-            blogLink: "/en/blogs",
-            contactLink: "/en/contact",
+            homeLink: "/",
+            aboutLink: "/about",
+            operationsLink: "/types-of-operations",
+            blogLink: "/blogs",
+            contactLink: "/contact",
             langLink: "/"
         }
     },
@@ -482,12 +482,12 @@ export const translations = {
             socialMedia: "Social Media",
             copyright: "All rights reserved © 2026 for Dr. Abdullah Al-Munifi.",
             operationList: [
-                { name: "Sleeve Gastrectomy", link: "/en/operation-details/sleeve-gastrectomy" },
-                { name: "Gallbladder Removal", link: "/en/operation-details/gallbladder-removal" },
-                { name: "Mini Gastric Bypass", link: "/en/operation-details/mini-gastric-bypass" },
-                { name: "Laparoscopic Hernia Repair", link: "/en/operation-details/laparoscopic-hernia-repair" },
-                { name: "Muscle Separation Repair", link: "/en/operation-details/laparoscopic-extraperitoneal-abdominoplasty" },
-                { name: "Classic Gastric Bypass", link: "/en/operation-details/classic-gastric-bypass" },
+                { name: "Sleeve Gastrectomy", link: "/operation-details/sleeve-gastrectomy" },
+                { name: "Gallbladder Removal", link: "/operation-details/gallbladder-removal" },
+                { name: "Mini Gastric Bypass", link: "/operation-details/mini-gastric-bypass" },
+                { name: "Laparoscopic Hernia Repair", link: "/operation-details/laparoscopic-hernia-repair" },
+                { name: "Muscle Separation Repair", link: "/operation-details/laparoscopic-extraperitoneal-abdominoplasty" },
+                { name: "Classic Gastric Bypass", link: "/operation-details/classic-gastric-bypass" },
             ]
         }
     },
@@ -649,6 +649,21 @@ export const translations = {
             }
         }
     },
+    error404: {
+            ar: {
+                title: "404",
+                subTitle: "المعذرة... الصفحة غير موجودة",
+                desc: "الصفحة التي تبحث عنها قد تمت إزالتها أو تغيير اسمها أو غير متاحة مؤقتاً.",
+                btn: "الرجوع للصفحة الرئيسية"
+            },
+            en: {
+                title: "404",
+                subTitle: "Oops! Page Not Found",
+                desc: "The page you are looking for might have been removed had its name changed or is temporarily unavailable.",
+                btn: "Go Back Home"
+            }
+        }
+    ,
     contact: {
         ar: {
             title: "تواصل معنا",

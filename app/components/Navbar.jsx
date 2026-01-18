@@ -27,6 +27,33 @@ const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        // Event delegation for mobile menu language switcher
+        const handleMobileLangClick = (e) => {
+            const switcher = e.target.closest('.mobile-lang-switcher');
+            if (switcher) {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLanguageChange();
+            }
+        };
+
+        const $ = window.jQuery;
+
+        // Re-initialize MeanMenu to update translations
+        if ($ && $.fn.meanmenu) {
+            $('.mean-bar').remove();
+            $('.mean-menu').meanmenu({
+                meanScreenWidth: "991"
+            });
+        }
+
+        document.body.addEventListener('click', handleMobileLangClick);
+        return () => {
+            document.body.removeEventListener('click', handleMobileLangClick);
+        };
+    }, [language]); // Depend on language context
+
     const t = translations.navbar[language] || translations.navbar.ar;
 
     const handleLanguageChange = () => {
@@ -38,7 +65,7 @@ const Navbar = () => {
     };
 
     const isActive = (path) => {
-        if (path === '/' || path === '/en') {
+        if (path === '/') {
             return pathname === path;
         }
         return pathname.startsWith(path);
@@ -88,7 +115,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            {/* <!-- Start Navbar Area --> */}
             <div className={`navbar-area ${isSticky ? 'is-sticky' : ''}`}>
                 <div className="fovia-responsive-nav">
                     <div className="container">
@@ -98,20 +124,6 @@ const Navbar = () => {
                                     <Image src="/assets/img/logo.png" alt="logo" width={150} height={50} />
                                 </Link>
                             </div>
-
-                            <button
-                                className={`navbar-toggler ${isMenuOpen ? '' : 'collapsed'}`}
-                                type="button"
-                                onClick={toggleMenu}
-                                aria-controls="navbarSupportedContent"
-                                aria-expanded={isMenuOpen}
-                                aria-label="Toggle navigation"
-                                style={{ position: 'absolute', right: language === 'ar' ? 'auto' : '0', left: language === 'ar' ? '0' : 'auto', top: '50%', transform: 'translateY(-50%)' }}
-                            >
-                                <span className="icon-bar top-bar"></span>
-                                <span className="icon-bar middle-bar"></span>
-                                <span className="icon-bar bottom-bar"></span>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -123,44 +135,31 @@ const Navbar = () => {
                                 <Image src="/assets/img/logo.png" alt="logo" width={150} height={50} />
                             </Link>
 
-                            <button
-                                className={`navbar-toggler ${isMenuOpen ? '' : 'collapsed'}`}
-                                type="button"
-                                onClick={toggleMenu}
-                                aria-controls="navbarSupportedContent"
-                                aria-expanded={isMenuOpen}
-                                aria-label="Toggle navigation"
-                            >
-                                <span className="icon-bar top-bar"></span>
-                                <span className="icon-bar middle-bar"></span>
-                                <span className="icon-bar bottom-bar"></span>
-                            </button>
-
-                            <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarSupportedContent">
+                            <div className="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                                 <ul className="navbar-nav">
                                     <li className={`nav-item ${isActive(t.homeLink) ? 'active' : ''}`}>
-                                        <Link href={t.homeLink} className={`nav-link ${isActive(t.homeLink) ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>{t.home}</Link>
+                                        <Link href={t.homeLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.home}</Link>
                                     </li>
 
                                     <li className={`nav-item ${isActive(t.aboutLink) ? 'active' : ''}`}>
-                                        <Link href={t.aboutLink} className={`nav-link ${isActive(t.aboutLink) ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>{t.about}</Link>
+                                        <Link href={t.aboutLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.about}</Link>
                                     </li>
 
                                     <li className={`nav-item ${isActive(t.operationsLink) ? 'active' : ''}`}>
-                                        <Link href={t.operationsLink} className={`nav-link ${isActive(t.operationsLink) ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>{t.operations}</Link>
+                                        <Link href={t.operationsLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.operations}</Link>
                                     </li>
 
                                     <li className={`nav-item ${isActive(t.blogLink) ? 'active' : ''}`}>
-                                        <Link href={t.blogLink} className={`nav-link ${isActive(t.blogLink) ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>{t.blog}</Link>
+                                        <Link href={t.blogLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.blog}</Link>
                                     </li>
 
                                     <li className={`nav-item ${isActive(t.contactLink) ? 'active' : ''}`}>
-                                        <Link href={t.contactLink} className={`nav-link ${isActive(t.contactLink) ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>{t.contact}</Link>
+                                        <Link href={t.contactLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.contact}</Link>
                                     </li>
 
                                     <li className="d-block d-lg-none nav-item">
-                                        <div className="nav-link" style={{ cursor: 'pointer' }} onClick={() => { handleLanguageChange(); setIsMenuOpen(false); }}>
-                                            <Image src={t.langFlag} alt="flag" width={20} height={20} />
+                                        <div className="nav-link mobile-lang-switcher" style={{ cursor: 'pointer' }} onClick={() => { handleLanguageChange(); setIsMenuOpen(false); }}>
+                                            <Image src={t.langFlag} alt="flag" width={30} height={30} />
                                             <span style={{ marginLeft: language === 'ar' ? '0' : '8px', marginRight: language === 'ar' ? '8px' : '0' }}>{t.langSwitch}</span>
                                         </div>
                                     </li>
@@ -172,7 +171,7 @@ const Navbar = () => {
 
                                 <div className="others-options">
                                     <div style={{ cursor: 'pointer', display: 'inline-block', marginInlineEnd: '15px' }} onClick={handleLanguageChange}>
-                                        <Image src={t.langFlag} alt="flag" width={20} height={20} />
+                                        <Image src={t.langFlag} alt="flag" width={30} height={30} />
                                     </div>
                                     <Link href={t.contactLink} className="btn btn-primary">{t.consultation}</Link>
                                 </div>
@@ -181,7 +180,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            {/* <!-- End Navbar Area --> */}
         </header>
     )
 }

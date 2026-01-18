@@ -10,7 +10,7 @@ const OperationCard = ({ operation }) => {
     const title = language === 'ar' ? (operation.title_ar || operation.title) : (operation.title_en || operation.title_ar);
     const description = language === 'ar' ? (operation.description_ar || operation.description) : (operation.description_en || operation.description_ar);
     const slug = language === 'ar' ? (operation.slug_ar || operation.slug) : (operation.slug || operation.slug_en);
-    const baseLink = language === 'ar' ? '/operation-details' : '/en/operation-details';
+    const baseLink = language === 'ar' ? '/operation-details' : '/operation-details';
     const link = `${baseLink}/${slug}`;
     const readMore = language === 'ar' ? "اقرأ المزيد" : "Read more";
 

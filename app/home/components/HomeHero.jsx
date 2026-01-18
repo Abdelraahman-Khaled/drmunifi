@@ -24,11 +24,11 @@ export const HomeHero = () => {
                                 <p>{t.desc}</p>
 
                                 <div className="btn-box">
-                                    <Link href={isAr ? "/contact" : "/en/contact"} className="btn btn-primary mx-1">
+                                    <Link href={"/contact"} className="btn btn-primary mx-1">
                                         {t.btn1}
                                         <i className="fas fa-bell"></i>
                                     </Link>
-                                    <Link href={isAr ? "/types-of-operations" : "/en/types-of-operations"} className="btn btn-light mx-1">
+                                    <Link href={"/types-of-operations"} className="btn btn-light mx-1">
                                         {t.btn2}
                                         <i className={isAr ? "fas fa-arrow-left" : "fas fa-arrow-right"}></i>
                                     </Link>

@@ -28,9 +28,7 @@ const BlogDetailContent = ({ blog }) => {
                 ? blog.slug_ar || blog.slug
                 : blog.slug || blog.slug_ar; // Assumes slug_ar/slug exist. Fallback logic.
 
-        // Construct new path. Checks if we are on /en or / (ar default). 
         // Adjust prefix based on language.
-        // If switching to 'en', prefix /en/blogs/
         // If switching to 'ar', prefix /blogs/
         const basePath = language === 'ar' ? '/blogs' : '/blogs';
 

@@ -27,8 +27,9 @@ const HomeImportance = () => {
                         <div className="our-mission-image our-mission-image-2">
                             <Image
                                 src="/assets/img/improve.webp"
-                                alt="Health Importance"
-                                fill
+                                alt="دور جراحة السمنة في تحسين الصحة"
+                                width={500}
+                                height={500}
                                 className="w-100"
                             />
                         </div>

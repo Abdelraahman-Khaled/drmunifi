@@ -19,8 +19,8 @@ const HomeOperations = () => {
                 </div>
 
                 <div className="row gy-4">
-                    {t.items.map((operation) => (
-                        <OperationCard key={operation.slug} operation={operation} />
+                    {t.items.map((operation, index) => (
+                        <OperationCard key={index} operation={operation} />
                     ))}
                 </div>
 

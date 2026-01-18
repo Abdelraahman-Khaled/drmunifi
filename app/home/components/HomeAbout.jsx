@@ -33,7 +33,7 @@ const HomeAbout = () => {
                             className=""
                         />
 
-                        <Link href={isAr ? "/about" : "/en/about"} className="btn btn-primary">
+                        <Link href={"/about"} className="btn btn-primary">
                             {homeT.btn}
                             <i className="flaticon-right-chevron"></i>
                         </Link>

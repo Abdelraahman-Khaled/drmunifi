@@ -17,20 +17,21 @@ const PhotoGallery = () => {
                     <p>{t.desc}</p>
                 </div>
 
-                <div className="row">
+                <div className="row justify-content-center">
                     {t.items.map((item, index) => (
-                        <div className="col-lg-3 col-md-6 mb-4" key={index}>
+                        <div className="col-lg-3 col-md-6 mb-4 d-flex justify-content-center" key={index}>
                             <div className="video-gallery-image" data-cursor-text={language === 'ar' ? 'عرض' : 'View'}>
                                 <a
                                     href={item.pdf}
                                     className="popup-video Infographic"
+                                    style={{ maxWidth: "300px" }}
                                 >
                                     <figure>
                                         <Image
                                             src={item.thumb}
                                             alt="infographic"
-                                            width={400}
-                                            height={560}
+                                            width={516}
+                                            height={516}
                                         />
                                     </figure>
                                 </a>

@@ -27,8 +27,9 @@ const HomeMission = () => {
                         <div className="our-mission-image">
                             <Image
                                 src="/assets/img/find-out.webp"
-                                alt="Mission Image"
-                                fill
+                                alt="اكتشف فوائد جراحة السمنة وابدأ رحلتك نحو التغيير"
+                                width={500}
+                                height={500}
                                 className="w-100"
                             />
                         </div>
