@@ -13,7 +13,7 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
             setLanguage(savedLang);
         }
     }, []);
-    1
+    
     useEffect(() => {
         // Update HTML attributes
         document.documentElement.lang = language;
