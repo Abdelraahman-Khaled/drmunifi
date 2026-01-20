@@ -49,6 +49,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN chmod +x /app/docker-entrypoint.sh
 
+# Give nextjs user write permissions to /app directory
+RUN chown -R nextjs:nodejs /app
+
 USER nextjs
 
 EXPOSE 9100
