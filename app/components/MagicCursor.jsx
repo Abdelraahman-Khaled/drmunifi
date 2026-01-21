@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
 const MagicCursor = () => {
@@ -157,6 +158,15 @@ const MagicCursor = () => {
             if (visibleInt.current) clearTimeout(visibleInt.current);
         };
     }, []);
+
+    // Reset cursor on route change
+    const pathname = usePathname();
+    useEffect(() => {
+        // Clear all states
+        cursorRef.current?.classList.remove('-text', '-pointer', '-active', '-visible');
+        if (textRef.current) textRef.current.innerHTML = '';
+        stick.current = null;
+    }, [pathname]);
 
     return (
         <div className="cb-cursor" ref={cursorRef}>

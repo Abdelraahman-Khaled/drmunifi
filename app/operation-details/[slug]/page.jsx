@@ -7,7 +7,6 @@ async function getOperation(slug) {
     try {
         // 1. Try with the original slug
         let data = await getOperationDetails(slug);
-        console.log(data);
 
         if (data && data.id) return data;
 
@@ -15,7 +14,6 @@ async function getOperation(slug) {
         if (slug.includes('-')) {
             const spaceSlug = slug.replace(/-/g, ' ');
             data = await getOperationDetails(spaceSlug);
-            console.log(data);
 
             if (data && data.id) return data;
         }

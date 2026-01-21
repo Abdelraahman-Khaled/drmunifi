@@ -23,7 +23,6 @@ const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
         setSubmitted(true);
         // Reset form or handle API call here
     };

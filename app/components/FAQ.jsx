@@ -15,7 +15,6 @@ const FAQ = ({ items }) => {
     };
 
 
-    console.log(items);
 
     return (
         <div className="faq-accordion p-0">

@@ -93,7 +93,6 @@ const BlogsContainer = () => {
                             {filteredBlogs.map((blog) => {
                                 const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
                                 const blogAlt = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.alt || blog.photos?.[0]?.alt || blog.alt || blog.alt_url;
-                                console.log(blogAlt);
 
                                 return (
                                     <div

@@ -10,7 +10,6 @@ async function getBlog(slug) {
     try {
         // 1. Try with the original slug
         let data = await getBlogDetails(slug);
-        console.log(data);
 
         if (data && data.id) return data;
 
@@ -18,7 +17,6 @@ async function getBlog(slug) {
         if (slug.includes('-')) {
             const spaceSlug = slug.replace(/-/g, ' ');
             data = await getBlogDetails(spaceSlug);
-            console.log(data);
 
             if (data && data.id) return data;
         }

@@ -29,22 +29,22 @@ export default function RootLayout({ children }) {
     // Note: Since this is a server component, we use ar as default.
     // The LanguageProvider will update document attributes on the client.
     return (
-        <LanguageProvider initialLanguage="ar">
-            <html lang="ar" dir="rtl" suppressHydrationWarning>
-                <head>
-                    <link
-                        rel="stylesheet"
-                        href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
-                    />
-                    <link
-                        rel="stylesheet"
-                        href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
-                    />
-                    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-                    <link rel="stylesheet" href="/assets/css/style.css" />
-                    <link rel="stylesheet" href="/assets/css/style-ar.css" />
-                </head>
-                <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <html lang="ar" dir="rtl" suppressHydrationWarning>
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
+                />
+                <link
+                    rel="stylesheet"
+                    href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
+                />
+                <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+                <link rel="stylesheet" href="/assets/css/style.css" />
+                <link rel="stylesheet" href="/assets/css/style-ar.css" />
+            </head>
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                <LanguageProvider initialLanguage="ar">
                     <MagicCursor />
                     <Preloader />
                     <Navbar />
@@ -64,8 +64,8 @@ export default function RootLayout({ children }) {
                     <Script src="/assets/js/jquery.appear.min.js" />
                     <Script src="/assets/js/wow.min.js" />
                     <Script src="/assets/js/main.js" strategy="lazyOnload" />
-                </body>
-            </html>
-        </LanguageProvider>
+                </LanguageProvider>
+            </body>
+        </html>
     );
 }
