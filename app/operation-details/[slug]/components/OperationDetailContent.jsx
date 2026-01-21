@@ -65,7 +65,7 @@ const OperationDetailContent = ({ operation }) => {
                                     <figure>
                                         <Image
                                             src={img.url}
-                                            alt={language === 'ar' ? (img.image_alt_text_ar || img.image_alt_text_en || "") : (img.image_alt_text_en || img.image_alt_text_ar || "")}
+                                            alt={language === 'ar' ? (img.alt_ar || img.alt_en || "") : (img.alt_en || img.alt_ar || "")}
                                             width={550}
                                             height={330}
                                             className="img-fluid rounded"
@@ -106,14 +106,24 @@ const OperationDetailContent = ({ operation }) => {
                         <div className="col-12">
                             <div className="services-details-desc">
                                 <div className="services-details-image">
-                                    <Image
-                                        src={operation.photo_url || operation.image || "/images/operations/operation-1.jpg"}
-                                        alt={title}
-                                        width={200}
-                                        height={200}
-                                        priority
-                                        className="rounded-5"
-                                    />
+                                    {(() => {
+                                        // Prefer is_landing: false for detail page, otherwise first available
+                                        const mainPhoto = operation.photos?.find(p => p.is_landing === false) || operation.photos?.[0];
+                                        const mainImage = mainPhoto?.url || operation.photo_url || operation.image || "/images/operations/operation-1.jpg";
+                                        const mainAlt = language === 'ar' ? (mainPhoto?.alt_ar || title) : (mainPhoto?.alt_en || title);
+
+                                        return (
+                                            <Image
+                                                src={mainImage}
+                                                alt={mainAlt}
+                                                width={1200}
+                                                height={600}
+                                                priority
+                                                className="rounded-5"
+                                                style={{ width: '100%', height: 'auto' }}
+                                            />
+                                        );
+                                    })()}
                                 </div>
                                 <h1 className="mt-4">
                                     {title}

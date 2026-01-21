@@ -67,7 +67,7 @@ const BlogDetailContent = ({ blog }) => {
                                     <figure>
                                         <Image
                                             src={img.url}
-                                            alt={language === 'ar' ? (img.image_alt_text_ar || img.image_alt_text_en || "") : (img.image_alt_text_en || img.image_alt_text_ar || "")}
+                                            alt={img.alt}
                                             width={1200}
                                             height={630}
                                             className="img-fluid rounded"
@@ -98,15 +98,23 @@ const BlogDetailContent = ({ blog }) => {
                         <div className="col-lg-12">
                             <div className="blog-details-desc">
                                 <div className="article-image">
-                                    <Image
-                                        className='rounded-5'
-                                        src={blog.image || blog.photo_url} // Handle various image props
-                                        alt={language === 'ar' ? (blog.title_ar || blog.title_en) : (blog.title_en || blog.title_ar)}
-                                        width={1200}
-                                        height={600}
-                                        style={{ width: '100%', height: 'auto' }}
-                                        priority
-                                    />
+                                    {(() => {
+                                        const mainPhoto = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic) || blog.photos?.[0];
+                                        const mainImage = mainPhoto?.url || blog.image || blog.photo_url;
+                                        const mainAlt = mainPhoto?.alt || (language === 'ar' ? (blog.title_ar || blog.title_en) : (blog.title_en || blog.title_ar));
+
+                                        return (
+                                            <Image
+                                                className='rounded-5'
+                                                src={mainImage}
+                                                alt={mainAlt}
+                                                width={1200}
+                                                height={600}
+                                                style={{ width: '100%', height: 'auto' }}
+                                                priority
+                                            />
+                                        );
+                                    })()}
                                 </div>
 
                                 <div className="article-content mt-4">

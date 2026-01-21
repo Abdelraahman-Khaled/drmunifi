@@ -90,19 +90,22 @@ const BlogsContainer = () => {
                         </div>
                     ) : (
                         <>
-                            {filteredBlogs.map((blog) => (
-                                <div
-                                    key={blog.id}
-                                    className={`col-lg-4 col-md-6 ${blog.category}`}
-                                >
-                                    <BlogContent
-                                        image={blog.image || blog.photo_url}
-                                        title={language === "ar" ? blog.title_ar : blog.title_en || blog.title_ar}
-                                        description={language === "ar" ? blog.description_ar : blog.description_en || blog.description_ar}
-                                        slug={language === "ar" ? blog.slug_ar : blog.slug || blog.slug_en}
-                                    />
-                                </div>
-                            ))}
+                            {filteredBlogs.map((blog) => {
+                                const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
+                                return (
+                                    <div
+                                        key={blog.id}
+                                        className={`col-lg-4 col-md-6 ${blog.category}`}
+                                    >
+                                        <BlogContent
+                                            image={blogImage}
+                                            title={language === "ar" ? blog.title_ar : blog.title_en || blog.title_ar}
+                                            description={language === "ar" ? blog.description_ar : blog.description_en || blog.description_ar}
+                                            slug={language === "ar" ? blog.slug_ar : blog.slug || blog.slug_en}
+                                        />
+                                    </div>
+                                );
+                            })}
 
                             {filteredBlogs.length === 0 && (
                                 <div className="col-12 text-center mt-5">

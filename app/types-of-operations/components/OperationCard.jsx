@@ -20,7 +20,7 @@ const OperationCard = ({ operation }) => {
                 <div className="icon">
                     {/* Fallback image or ensure cardImage exists in API or mapped appropriately */}
                     <Image
-                        src={operation.cardImage || operation.photo_url || "/images/services/service-icon-1.png"}
+                        src={operation.photos?.[0]?.url || operation.photo_url || "/images/services/service-icon-1.png"}
                         alt={title}
                         width={42}
                         height={42}
