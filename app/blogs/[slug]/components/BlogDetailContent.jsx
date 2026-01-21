@@ -90,7 +90,7 @@ const BlogDetailContent = ({ blog }) => {
 
     return (
         <>
-            <HeroSection title={language === "ar" ? blog.title_ar : blog.title_en} subTitle={"المدونة"} subTitleLink="/blogs" number={2} />
+            <HeroSection title={language === "ar" ? blog.title_ar : blog.title_en} subTitle={language === "ar" ? "المدونة" : "Blog"} subTitleLink="/blogs" number={2} />
             <ScrollTicker />
             <section className="blog-details-area ptb-100">
                 <div className="container">
