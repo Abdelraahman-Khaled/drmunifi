@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
 
-const BlogContent = ({ image, title, description, slug }) => {
+const BlogContent = ({ image, alt, title, description, slug }) => {
     const { language } = useLanguage();
 
     return (
@@ -11,7 +11,7 @@ const BlogContent = ({ image, title, description, slug }) => {
             <div className="post-featured-image">
                 <div className="post-image">
                     <Link href={`blogs/${slug}`} data-cursor-text={language === 'ar' ? 'قراءة المقال' : 'Read Article'}>
-                        <Image src={image} alt="image" width={416} height={189} />
+                        <Image src={image} alt={alt} width={416} height={189} />
                     </Link>
                 </div>
 
