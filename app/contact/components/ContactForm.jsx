@@ -1,30 +1,58 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 import { translations } from '@/context/translation'
+import emailjs from '@emailjs/browser'
 
 const ContactForm = () => {
     const { language } = useLanguage();
     const t = translations.contact[language];
+    const form = useRef();
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        phone_number: '',
-        msg_subject: '',
+        phone: '',
+        subject: '',
         message: ''
     });
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        // Reset form or handle API call here
+
+        emailjs
+            .sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+                form.current,
+                {
+                    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+                }
+            )
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                    setSubmitted(true);
+                    setFormData({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        subject: '',
+                        message: ''
+                    });
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    setError(error.text);
+                },
+            );
     };
 
     return (
@@ -43,7 +71,7 @@ const ContactForm = () => {
                                     {t.success}
                                 </div>
                             ) : (
-                                <form id="contactForm" onSubmit={handleSubmit}>
+                                <form id="contactForm" ref={form} onSubmit={sendEmail}>
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6">
                                             <div className="form-group">
@@ -79,12 +107,12 @@ const ContactForm = () => {
                                             <div className="form-group">
                                                 <input
                                                     type="text"
-                                                    name="phone_number"
-                                                    id="phone_number"
+                                                    name="phone"
+                                                    id="phone"
                                                     required
                                                     className="form-control"
                                                     placeholder={t.phone}
-                                                    value={formData.phone_number}
+                                                    value={formData.phone}
                                                     onChange={handleChange}
                                                 />
                                             </div>
@@ -94,12 +122,12 @@ const ContactForm = () => {
                                             <div className="form-group">
                                                 <input
                                                     type="text"
-                                                    name="msg_subject"
-                                                    id="msg_subject"
+                                                    name="subject"
+                                                    id="subject"
                                                     className="form-control"
                                                     required
                                                     placeholder={t.subject}
-                                                    value={formData.msg_subject}
+                                                    value={formData.subject}
                                                     onChange={handleChange}
                                                 />
                                             </div>
@@ -128,6 +156,7 @@ const ContactForm = () => {
                                             </button>
                                         </div>
                                     </div>
+                                    {error && <div className="alert alert-danger mt-3">{error}</div>}
                                 </form>
                             )}
                         </div>

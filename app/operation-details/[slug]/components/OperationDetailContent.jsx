@@ -125,9 +125,6 @@ const OperationDetailContent = ({ operation }) => {
                                         );
                                     })()}
                                 </div>
-                                <h1 className="mt-4">
-                                    {title}
-                                </h1>
 
                                 <div className="article-content mt-4">
                                     {renderContent()}

@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { getBlogs } from "@/app/api/blog";
+import React, { useState } from "react";
+
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/context/translation";
 import BlogContent from "./BlogContent";
 
-const BlogsContainer = () => {
+const BlogsContainer = ({ initialBlogs }) => {
     const { language } = useLanguage();
-    const [activeFilter, setActiveFilter] = useState("*");
-    const [blogsList, setBlogsList] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [activeFilter, setActiveFilter] = useState("*");
+    const blogsList = initialBlogs || [];
 
     // Fallback for translations if not yet added to translation.js
     const t_data = translations.blogsPage?.[language] || {};
@@ -26,30 +24,17 @@ const BlogsContainer = () => {
         { label: t("e_commerce_label"), value: "e_commerce" },
     ];
 
-    useEffect(() => {
-        const fetchBlogs = async () => {
-            try {
-                const data = await getBlogs();
-                // Ensure data is an array
-                setBlogsList(Array.isArray(data) ? data : []);
-            } catch (error) {
-                console.error("Failed to fetch blogs:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchBlogs();
-    }, []);
 
-    const filteredBlogs =
-        activeFilter === "*"
-            ? blogsList
-            : blogsList.filter((blog) => blog.category === activeFilter);
 
-    const handleFilterClick = (e, filterValue) => {
-        e.preventDefault();
-        setActiveFilter(filterValue);
-    };
+    // const filteredBlogs =
+    //     activeFilter === "*"
+    //         ? blogsList
+    //         : blogsList.filter((blog) => blog.category === activeFilter);
+
+    // const handleFilterClick = (e, filterValue) => {
+    //     e.preventDefault();
+    //     setActiveFilter(filterValue);
+    // };
 
     return (
         <div className="page-blog ptb-100">
@@ -81,42 +66,33 @@ const BlogsContainer = () => {
                 </div> */}
 
                 <div className="row">
-                    {loading ? (
-                        <div className="col-12 text-center mt-5">
-                            <div className="spinner-border text-primary" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                            <p className="mt-2 text-muted">Thinking...</p>
-                        </div>
-                    ) : (
-                        <>
-                            {filteredBlogs.map((blog) => {
-                                const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
-                                const blogAlt = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.alt || blog.photos?.[0]?.alt || blog.alt || blog.alt_url;
+                    <>
+                        {blogsList.map((blog) => {
+                            const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
+                            const blogAlt = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.alt || blog.photos?.[0]?.alt || blog.alt || blog.alt_url;
 
-                                return (
-                                    <div
-                                        key={blog.id}
-                                        className={`col-lg-4 col-md-6 ${blog.category}`}
-                                    >
-                                        <BlogContent
-                                            image={blogImage}
-                                            alt={blogAlt}
-                                            title={language === "ar" ? blog.title_ar : blog.title_en || blog.title_ar}
-                                            description={language === "ar" ? blog.description_ar : blog.description_en || blog.description_ar}
-                                            slug={language === "ar" ? blog.slug_ar : blog.slug || blog.slug_en}
-                                        />
-                                    </div>
-                                );
-                            })}
-
-                            {filteredBlogs.length === 0 && (
-                                <div className="col-12 text-center mt-5">
-                                    <p>{t("no_articles_found")}</p>
+                            return (
+                                <div
+                                    key={blog.id}
+                                    className={`col-lg-4 col-md-6 ${blog.category}`}
+                                >
+                                    <BlogContent
+                                        image={blogImage}
+                                        alt={blogAlt}
+                                        title={language === "ar" ? blog.title_ar : blog.title_en || blog.title_ar}
+                                        description={language === "ar" ? blog.description_ar : blog.description_en || blog.description_ar}
+                                        slug={language === "ar" ? blog.slug_ar : blog.slug || blog.slug_en}
+                                    />
                                 </div>
-                            )}
-                        </>
-                    )}
+                            );
+                        })}
+
+                        {blogsList.length === 0 && (
+                            <div className="col-12 text-center mt-5">
+                                <p>{t("no_articles_found")}</p>
+                            </div>
+                        )}
+                    </>
                 </div>
             </div>
         </div>

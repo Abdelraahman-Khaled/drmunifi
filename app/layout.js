@@ -7,19 +7,57 @@ import Preloader from "./components/Preloader";
 import MagicCursor from "./components/MagicCursor";
 import Script from "next/script";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
-
 export const metadata = {
-    title: "الدكتور عبدالله المنيفي - الرئيسية",
-    description: "Dr.Abdullah Munifi",
+    metadataBase: new URL('https://dralmunifi.com'),
+    title: {
+        default: "الدكتور عبدالله المنيفي - جراحة السمنة والمناظير",
+        template: "%s | الدكتور عبدالله المنيفي"
+    },
+    description: "الدكتور عبدالله المنيفي استشاري جراحة السمنة والمناظير المتقدمة. متخصص في تكميم المعدة، تحويل المسار، والحلول الجراحية الدقيقة للسمنة في المملكة العربية السعودية.",
+    keywords: ["جراحة السمنة", "تكميم المعدة", "تحويل المسار", "دكتور عبدالله المنيفي", "Bariatric Surgery", "Gastric Sleeve", "Saudi Arabia"],
+    authors: [{ name: "Dr. Abdullah AlMunifi" }],
+    creator: "Dr. Abdullah AlMunifi",
+    publisher: "Dr. Abdullah AlMunifi",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        type: 'website',
+        locale: 'ar_SA',
+        alternateLocale: 'en_US',
+        url: 'https://dralmunifi.com',
+        siteName: 'Dr. Abdullah AlMunifi',
+        title: "الدكتور عبدالله المنيفي - خيارك الأول لجراحة السمنة",
+        description: "استشاري جراحة السمنة والمناظير المتقدمة. نقدم رعاية طبية متكاملة لمرضى السمنة بأحدث التقنيات.",
+        images: [
+            {
+                url: '/assets/img/about-img1.webp', // Using the about image as a fallback OG image
+                width: 1200,
+                height: 630,
+                alt: 'Dr. Abdullah AlMunifi',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "الدكتور عبدالله المنيفي",
+        description: "استشاري جراحة السمنة والمناظير المتقدمة.",
+        images: ['/assets/img/about-img1.webp'],
+        creator: '@DrAlMunifi', // Assuming finding this handle from the Navbar link
+    },
+    icons: {
+        icon: '/assets/img/favicon.png',
+        shortcut: '/assets/img/favicon.png',
+        apple: '/assets/img/favicon.png',
+    },
 };
 
 
@@ -43,7 +81,7 @@ export default function RootLayout({ children }) {
                 <link rel="stylesheet" href="/assets/css/style.css" />
                 <link rel="stylesheet" href="/assets/css/style-ar.css" />
             </head>
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <body>
                 <LanguageProvider initialLanguage="ar">
                     <MagicCursor />
                     <Preloader />

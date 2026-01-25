@@ -1,13 +1,31 @@
 "use client"
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
 import { translations } from '@/context/translation'
 import OperationCard from '@/app/types-of-operations/components/OperationCard'
+import { getOperations } from '@/app/api/operations'
 
 const HomeOperations = () => {
     const { language } = useLanguage();
     const t = translations.home[language].operations;
+    const [operations, setOperations] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchOperations = async () => {
+            try {
+                const data = await getOperations();
+                setOperations(Array.isArray(data) ? data : []);
+            } catch (error) {
+                console.error("Failed to fetch operations:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchOperations();
+    }, []);
+
 
     return (
         <section className="services-area ptb-100">
@@ -19,13 +37,21 @@ const HomeOperations = () => {
                 </div>
 
                 <div className="row gy-4">
-                    {t.items.map((operation, index) => (
-                        <OperationCard key={index} operation={operation} />
-                    ))}
+                    {loading ? (
+                        <div className="col-12 text-center">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    ) : (
+                        operations.slice(0, 3).map((operation, index) => (
+                            <OperationCard key={index} operation={operation} />
+                        ))
+                    )}
                 </div>
 
                 <div className="text-center mt-5">
-                    <Link href={`/${language}/types-of-operations`} className="btn btn-primary d-inline-block">
+                    <Link href={`/types-of-operations`} className="btn btn-primary d-inline-block">
                         {t.btn} <i className="flaticon-right-chevron"></i>
                     </Link>
                 </div>
