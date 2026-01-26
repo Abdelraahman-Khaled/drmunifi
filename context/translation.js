@@ -110,9 +110,9 @@ export const translations = {
                 yourBmi: "مؤشر كتلة جسمك:",
                 statusLabel: {
                     underweight: "نقص في الوزن",
-                    healthy: "صحيح",
+                    healthy: "طبيعي",
                     overweight: "الوزن زائد",
-                    obese: "بدين"
+                    obese: "سمنة"
                 }
             },
             operations: {
@@ -318,7 +318,7 @@ export const translations = {
                 yourBmi: "Your BMI:",
                 statusLabel: {
                     underweight: "Underweight",
-                    healthy: "Healthy",
+                    healthy: "Normal",
                     overweight: "Overweight",
                     obese: "Obese"
                 }
@@ -650,19 +650,19 @@ export const translations = {
         }
     },
     error404: {
-            ar: {
-                title: "404",
-                subTitle: "المعذرة... الصفحة غير موجودة",
-                desc: "الصفحة التي تبحث عنها قد تمت إزالتها أو تغيير اسمها أو غير متاحة مؤقتاً.",
-                btn: "الرجوع للصفحة الرئيسية"
-            },
-            en: {
-                title: "404",
-                subTitle: "Oops! Page Not Found",
-                desc: "The page you are looking for might have been removed had its name changed or is temporarily unavailable.",
-                btn: "Go Back Home"
-            }
+        ar: {
+            title: "404",
+            subTitle: "المعذرة... الصفحة غير موجودة",
+            desc: "الصفحة التي تبحث عنها قد تمت إزالتها أو تغيير اسمها أو غير متاحة مؤقتاً.",
+            btn: "الرجوع للصفحة الرئيسية"
+        },
+        en: {
+            title: "404",
+            subTitle: "Oops! Page Not Found",
+            desc: "The page you are looking for might have been removed had its name changed or is temporarily unavailable.",
+            btn: "Go Back Home"
         }
+    }
     ,
     contact: {
         ar: {
