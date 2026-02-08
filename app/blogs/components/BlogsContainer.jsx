@@ -1,7 +1,4 @@
 "use client";
-
-import React, { useState } from "react";
-
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/context/translation";
 import BlogContent from "./BlogContent";
