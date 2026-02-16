@@ -87,6 +87,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/style-ar.css" />
+        <meta
+          name="google-site-verification"
+          content="8Cw1icN49KSSlD_rZ7O6lRWcDdrI7eT-trjQ_-3Zy88"
+        />
         {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
