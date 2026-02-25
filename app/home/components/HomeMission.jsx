@@ -28,8 +28,8 @@ const HomeMission = () => {
                             <Image
                                 src="/assets/img/find-out.webp"
                                 alt="اكتشف فوائد جراحة السمنة وابدأ رحلتك نحو التغيير"
-                                width={500}
-                                height={500}
+                                width={600}
+                                height={850}
                                 className="w-100"
                             />
                         </div>

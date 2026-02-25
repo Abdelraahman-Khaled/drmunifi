@@ -29,7 +29,7 @@ const HomeImportance = () => {
                                 src="/assets/img/improve.webp"
                                 alt="دور جراحة السمنة في تحسين الصحة"
                                 width={500}
-                                height={500}
+                                height={850}
                                 className="w-100"
                             />
                         </div>
