@@ -1,14 +1,30 @@
 "use client"
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
 import { translations } from '@/context/translation'
 import BlogContent from '@/app/blogs/components/BlogContent'
+import { getBlogs } from '@/app/api/blog'
 
-const HomeBlog = ({ initialBlogs }) => {
+const HomeBlog = () => {
     const { language } = useLanguage();
     const t = translations.home[language].blog;
-    const blogs = initialBlogs || [];
+    const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const data = await getBlogs();
+                setBlogs(Array.isArray(data) ? data.slice(0, 3) : []);
+            } catch (error) {
+                console.error("Failed to fetch blogs:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchBlogs();
+    }, []);
 
     return (
         <section className="blog-area ptb-100 bg-f4f9fd">
@@ -20,7 +36,13 @@ const HomeBlog = ({ initialBlogs }) => {
                 </div>
 
                 <div className="row mt-4">
-                    {blogs.length > 0 ? (
+                    {loading ? (
+                        <div className="col-12 text-center">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    ) : blogs.length > 0 ? (
                         blogs.map((blog) => {
                             const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
                             const blogAlt = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.alt || blog.photos?.[0]?.alt || blog.alt || blog.alt_url;
@@ -45,7 +67,7 @@ const HomeBlog = ({ initialBlogs }) => {
                 </div>
 
                 <div className="text-center mt-5">
-                    <Link href={`/${language}/blogs`} className="btn btn-primary">
+                    <Link href={`/blogs`} className="btn btn-primary">
                         {t.btn} <i className="flaticon-right-chevron"></i>
                     </Link>
                 </div>

@@ -1,58 +1,93 @@
-import { getBlogs } from '@/app/api/blog';
-import { getOperations } from '@/app/api/operations';
+import { getBlogs } from "@/app/api/blog";
+import { getOperations } from "@/app/api/operations";
+
+export const dynamic = "force-dynamic";
 
 export default async function sitemap() {
-    const baseUrl = 'https://dralmunifi.com';
+  const baseUrl = "https://www.almunifi.com";
+  const currentDate = new Date().toISOString().split("T")[0];
 
-    // Static Routes
-    const staticRoutes = [
-        '',
-        '/about',
-        '/contact',
-        '/blogs',
-        '/types-of-operations',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
-    }));
+  // 1. الصفحات الثابتة
+  const staticRoutes = [
+    "",
+    "/about",
+    "/contact",
+    "/blogs",
+    "/types-of-operations",
+  ];
 
-    // Fetch Dynamic Data
-    let blogs = [];
-    let operations = [];
+  const staticPages = staticRoutes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: currentDate,
+    changeFrequency: "weekly",
+    priority: route === "" ? 1 : 0.8,
+  }));
 
-    try {
-        blogs = await getBlogs();
-    } catch (error) {
-        console.error('Sitemap: Failed to fetch blogs', error);
-    }
+  // 2. صفحات العمليات مع الروابط البديلة (Alternates)
+  let operationPages = [];
+  try {
+    const rawOperations = await getOperations();
+    const operationsArray = Array.isArray(rawOperations) ? rawOperations : [];
 
-    try {
-        operations = await getOperations();
-    } catch (error) {
-        console.error('Sitemap: Failed to fetch operations', error);
-    }
+    operationPages = operationsArray.map((op) => {
+      // تشفير الروابط
+      const englishSlug = encodeURI(op.slug || "");
+      const arabicSlug = encodeURI(op.slug_ar || "");
 
-    // Dynamic Blog Routes
-    const blogRoutes = Array.isArray(blogs)
-        ? blogs.map((blog) => ({
-            url: `${baseUrl}/blogs/${blog.slug}`,
-            lastModified: new Date(blog.updated_at || new Date()),
-            changeFrequency: 'weekly',
-            priority: 0.7,
-        }))
-        : [];
+      const englishUrl = `${baseUrl}/operation-details/${englishSlug}`;
+      const arabicUrl = `${baseUrl}/operation-details/${arabicSlug}`;
 
-    // Dynamic Operation Routes
-    const operationRoutes = Array.isArray(operations)
-        ? operations.map((op) => ({
-            url: `${baseUrl}/operation-details/${op.slug}`,
-            lastModified: new Date(op.updated_at || new Date()),
-            changeFrequency: 'weekly',
-            priority: 0.7,
-        }))
-        : [];
+      return {
+        url: arabicUrl, // جعلنا الرابط الافتراضي هو العربي (يمكنك تغييره للإنجليزية إذا أردت)
+        lastModified: new Date(op.updated_at || op.created_at || new Date())
+          .toISOString()
+          .split("T")[0],
+        changeFrequency: "weekly",
+        priority: 0.7,
+        alternates: {
+          languages: {
+            ar: arabicUrl,
+            en: englishUrl,
+          },
+        },
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching operations for sitemap:", error);
+  }
 
-    return [...staticRoutes, ...blogRoutes, ...operationRoutes];
+  // 3. صفحات المقالات مع الروابط البديلة (Alternates)
+  let blogPages = [];
+  try {
+    const rawBlogs = await getBlogs();
+    const blogsArray = Array.isArray(rawBlogs) ? rawBlogs : [];
+
+    blogPages = blogsArray.map((blog) => {
+      // تشفير الروابط
+      const englishSlug = encodeURI(blog.slug || "");
+      const arabicSlug = encodeURI(blog.slug_ar || "");
+
+      const englishUrl = `${baseUrl}/blogs/${englishSlug}`;
+      const arabicUrl = `${baseUrl}/blogs/${arabicSlug}`;
+
+      return {
+        url: arabicUrl, // الرابط الافتراضي
+        lastModified: new Date(blog.updated_at || blog.created_at || new Date())
+          .toISOString()
+          .split("T")[0],
+        changeFrequency: "weekly",
+        priority: 0.7,
+        alternates: {
+          languages: {
+            ar: arabicUrl,
+            en: englishUrl,
+          },
+        },
+      };
+    });
+  } catch (error) {
+    console.error("Error fetching blogs for sitemap:", error);
+  }
+
+  return [...staticPages, ...operationPages, ...blogPages];
 }

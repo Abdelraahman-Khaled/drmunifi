@@ -54,23 +54,27 @@ export async function generateMetadata({ params }) {
         ? (blog.meta_description_ar || blog.description_ar)
         : (blog.meta_description_en || blog.description_en);
 
+    const canonicalUrl = language === 'ar'
+        ? `https://www.almunifi.com/blogs/${blog.slug_ar}`
+        : `https://www.almunifi.com/blogs/${blog.slug}`;
+
     return {
         title: `Dr Al Munifi | ${title}`,
         description,
         icons: {
-            icon: '/images/icons/favicon.ico',
-            shortcut: '/images/icons/favicon.ico',
+            icon: '/img/favicon.png',
+            shortcut: '/img/favicon.png',
         },
         openGraph: {
             title: "Dr Al Munifi" | title,
             description,
-            images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
+            images: blog.photo_url ? [blog.photo_url] : ["/img/favicon.png"],
         },
         alternates: {
-            canonical: `/blog/${blog.slug}`,
+            canonical: canonicalUrl,
             languages: {
-                ar: `/blog/${blog.slug_ar}`,
-                en: `/blog/${blog.slug}`,
+                ar: `https://www.almunifi.com/blogs/${blog.slug_ar}`,
+                en: `https://www.almunifi.com/blogs/${blog.slug}`,
             }
         }
     }

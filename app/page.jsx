@@ -16,7 +16,7 @@ export const metadata = {
     title: "الدكتور عبدالله المنيفي | استشاري جراحة السمنة والمناظير",
     description: " الصفحة الرئيسية للدكتور عبدالله المنيفي. اكتشف رحلة التحول مع جراحات السمنة المتقدمة، تكميم المعدة، وتحويل المسار بأحدث التقنيات.",
     alternates: {
-        canonical: 'https://dralmunifi.com',
+        canonical: 'https://www.almunifi.com',
     }
 };
 
@@ -24,9 +24,9 @@ const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: 'Dr. Abdullah AlMunifi',
-    image: 'https://dralmunifi.com/assets/img/logo.png',
-    '@id': 'https://dralmunifi.com',
-    url: 'https://dralmunifi.com',
+    image: 'https://www.almunifi.com/assets/img/logo.png',
+    '@id': 'https://www.almunifi.com',
+    url: 'https://www.almunifi.com',
     telephone: '+966535195519',
     address: {
         '@type': 'PostalAddress',

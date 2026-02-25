@@ -8,10 +8,17 @@ import MagicCursor from "./components/MagicCursor";
 import Script from "next/script";
 
 export const metadata = {
-  metadataBase: new URL("https://almunifi.com"),
+  metadataBase: new URL("https://www.almunifi.com"),
   title: {
     default: "الدكتور عبدالله المنيفي - جراحة السمنة والمناظير",
     template: "%s | الدكتور عبدالله المنيفي",
+  },
+  alternates: {
+    canonical: "./",
+    languages: {
+      ar: "./",
+      en: "./",
+    },
   },
   description:
     "الدكتور عبدالله المنيفي استشاري جراحة السمنة والمناظير المتقدمة. متخصص في تكميم المعدة، تحويل المسار، والحلول الجراحية الدقيقة للسمنة في المملكة العربية السعودية.",
@@ -42,7 +49,7 @@ export const metadata = {
     type: "website",
     locale: "ar_SA",
     alternateLocale: "en_US",
-    url: "https://dralmunifi.com",
+    url: "https://www.almunifi.com",
     siteName: "Dr. Abdullah AlMunifi",
     title: "الدكتور عبدالله المنيفي - خيارك الأول لجراحة السمنة",
     description:
