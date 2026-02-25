@@ -1,12 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { operationsData } from '@/app/data/operationsData'
 import OperationCard from './OperationCard'
-import { useLanguage } from '@/context/LanguageContext'
 import { getOperations } from '@/app/api/operations'
 
 const OperationsContainer = () => {
-    const { language } = useLanguage();
     const [operations, setOperations] = useState([]);
     const [loading, setLoading] = useState(true);
 
