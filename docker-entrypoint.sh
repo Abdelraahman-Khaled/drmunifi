@@ -1,15 +1,16 @@
-#!/bin/sh
-# Create .env file from environment variables
+﻿#!/bin/sh
+set -e
 
-# Create .env file
-> .env
+# Write runtime environment variables into /app/.env so Next.js can read them
+# (only variables that are set/non-empty, skip internal shell variables starting with _)
+ENV_FILE="/app/.env"
+: > "$ENV_FILE"
 
-# Write all environment variables to .env
 env | grep -v '^_' | while IFS='=' read -r key value; do
   if [ -n "$key" ] && [ -n "$value" ]; then
-    echo "${key}=${value}" >> .env
+    printf '%s=%s\n' "$key" "$value" >> "$ENV_FILE"
   fi
 done
 
-# Execute the main command
+# Hand off to the CMD (e.g. node server.js)
 exec "$@"
