@@ -107,6 +107,10 @@ export default function RootLayout({ children }) {
                     })(window,document,'script','dataLayer','GTM-WTPCCCX9');`}
         </Script>
         {/* End Google Tag Manager */}
+        <meta
+          name="google-site-verification"
+          content="my6iKVtZXrzuJuUzAxR-qRorYsSQ1JPGy--Tl7zUVn4"
+        />
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
