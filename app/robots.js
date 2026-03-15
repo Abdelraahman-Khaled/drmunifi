@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: ["/admin", "/cdn-cgi/", "/assets/", "/api/"],
     },
-    sitemap: "https://www.almunifi.com/sitemap.xml",
+    sitemap: "https://almunifi.com/sitemap.xml",
   };
 }

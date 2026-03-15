@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { useLanguage } from '@/context/LanguageContext'
-import { translations } from '@/context/translation'
+import { useLanguage } from '../../context/LanguageContext'
+import { translations } from '../../context/translation'
 
 const ScrollTicker = () => {
     const { language } = useLanguage();

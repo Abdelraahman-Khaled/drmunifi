@@ -4,14 +4,28 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useLanguage } from '@/context/LanguageContext'
-import { translations } from '@/context/translation'
+import { useLanguage } from '../../context/LanguageContext'
+import { translations } from '../../context/translation'
+import { getOperations } from '../api/operations'
 
 const Navbar = () => {
     const { language, toggleLanguage } = useLanguage();
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+    const [operations, setOperations] = useState([]);
+
+    useEffect(() => {
+        const fetchOperations = async () => {
+            try {
+                const data = await getOperations();
+                setOperations(Array.isArray(data) ? data : []);
+            } catch (error) {
+                console.error("Failed to fetch operations for navbar:", error);
+            }
+        };
+        fetchOperations();
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,11 +78,18 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const getLocalizedPath = (path) => {
+        // If path already starts with /ar or /en, return it
+        if (path.startsWith('/ar') || path.startsWith('/en')) return path;
+        return `/${language}${path === '/' ? '' : path}`;
+    };
+
     const isActive = (path) => {
-        if (path === '/') {
-            return pathname === path;
+        const localizedPath = getLocalizedPath(path);
+        if (path === '/' || path === '') {
+            return pathname === `/${language}` || pathname === `/${language}/`;
         }
-        return pathname.startsWith(path);
+        return pathname.startsWith(localizedPath);
     };
 
     return (
@@ -120,7 +141,7 @@ const Navbar = () => {
                     <div className="container">
                         <div className="fovia-responsive-menu">
                             <div className="logo">
-                                <Link href={t.homeLink}>
+                                <Link href={getLocalizedPath('/')}>
                                     <Image src="/assets/img/logo.png" alt="logo" width={150} height={50} />
                                 </Link>
                             </div>
@@ -131,30 +152,45 @@ const Navbar = () => {
                 <div className="fovia-nav">
                     <div className="container">
                         <nav className="navbar navbar-expand-md navbar-light">
-                            <Link className="navbar-brand" href={t.homeLink}>
+                            <Link className="navbar-brand" href={getLocalizedPath('/')}>
                                 <Image src="/assets/img/logo.png" alt="logo" width={150} height={50} />
                             </Link>
 
                             <div className="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                                 <ul className="navbar-nav">
-                                    <li className={`nav-item ${isActive(t.homeLink) ? 'active' : ''}`}>
-                                        <Link href={t.homeLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.home}</Link>
+                                    <li className={`nav-item ${isActive('/') ? 'active' : ''}`}>
+                                        <Link href={getLocalizedPath('/')} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.home}</Link>
                                     </li>
 
-                                    <li className={`nav-item ${isActive(t.aboutLink) ? 'active' : ''}`}>
-                                        <Link href={t.aboutLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.about}</Link>
+                                    <li className={`nav-item ${isActive('/about') ? 'active' : ''}`}>
+                                        <Link href={getLocalizedPath('/about')} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.about}</Link>
                                     </li>
 
-                                    <li className={`nav-item ${isActive(t.operationsLink) ? 'active' : ''}`}>
-                                        <Link href={t.operationsLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.operations}</Link>
+                                    <li className={`nav-item ${isActive('/types-of-operations') ? 'active' : ''}`}>
+                                        <Link href={getLocalizedPath('/types-of-operations')} className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                                            {t.operations} <i className="fa-solid fa-chevron-down" style={{ fontSize: '10px', marginInlineStart: '5px' }}></i>
+                                        </Link>
+                                        <ul className="dropdown-menu">
+                                            {operations.map((op) => (
+                                                <li key={op.id} className="nav-item">
+                                                    <Link
+                                                        href={getLocalizedPath(`/operation-details/${language === 'ar' ? (op.slug_ar || op.slug) : (op.slug || op.slug_ar)}`)}
+                                                        className="nav-link"
+                                                        onClick={() => setIsMenuOpen(false)}
+                                                    >
+                                                        {language === 'ar' ? (op.title_ar || op.title) : (op.title_en || op.title_ar)}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </li>
 
-                                    <li className={`nav-item ${isActive(t.blogLink) ? 'active' : ''}`}>
-                                        <Link href={t.blogLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.blog}</Link>
+                                    <li className={`nav-item ${isActive('/blogs') ? 'active' : ''}`}>
+                                        <Link href={getLocalizedPath('/blogs')} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.blog}</Link>
                                     </li>
 
-                                    <li className={`nav-item ${isActive(t.contactLink) ? 'active' : ''}`}>
-                                        <Link href={t.contactLink} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.contact}</Link>
+                                    <li className={`nav-item ${isActive('/contact') ? 'active' : ''}`}>
+                                        <Link href={getLocalizedPath('/contact')} className="nav-link" onClick={() => setIsMenuOpen(false)}>{t.contact}</Link>
                                     </li>
 
                                     <li className="d-block d-lg-none nav-item">
@@ -165,7 +201,7 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="d-block d-lg-none w-fit-content nav-item">
-                                        <Link href={t.contactLink} className="btn btn-primary nav-link" onClick={() => setIsMenuOpen(false)}>{t.consultation}</Link>
+                                        <Link href={getLocalizedPath('/contact')} className="btn btn-primary nav-link" onClick={() => setIsMenuOpen(false)}>{t.consultation}</Link>
                                     </li>
                                 </ul>
 
@@ -173,7 +209,7 @@ const Navbar = () => {
                                     <div style={{ cursor: 'pointer', display: 'inline-block', marginInlineEnd: '15px' }} onClick={handleLanguageChange}>
                                         <Image src={t.langFlag} alt="flag" width={30} height={30} />
                                     </div>
-                                    <Link href={t.contactLink} className="btn btn-primary">{t.consultation}</Link>
+                                    <Link href={getLocalizedPath('/contact')} className="btn btn-primary">{t.consultation}</Link>
                                 </div>
                             </div>
                         </nav>
@@ -181,7 +217,8 @@ const Navbar = () => {
                 </div>
             </div>
         </header>
-    )
+    );
+
 }
 
 export default Navbar

@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
  *  - enHref  : full English URL (optional, auto-detected if omitted)
  *  - canonical: which language is canonical ("ar" | "en", default "ar")
  */
-const BASE = "https://www.almunifi.com";
+const BASE = "https://almunifi.com";
 
 export default function HreflangTags({ arHref, enHref, canonical = "ar" }) {
     const pathname = usePathname();

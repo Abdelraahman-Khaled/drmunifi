@@ -1,0 +1,76 @@
+    en: {
+      title: "Book an Appointment Now",
+      name: "Name",
+      phone: "Phone Number",
+      operation: "Operation to inquire about",
+      selectOperation: "Select Operation",
+      message: "Brief about the topic",
+      send: "Book Now",
+      success:
+        "Your request has been sent successfully! We will contact you soon.",
+      error: "Something went wrong, please try again.",
+    },
+  },
+  fixedOperations: {
+    ar: [
+      {
+        title: "تجلط الأوردة العميقة",
+        slug: "تجلط-الأوردة-العميقة",
+      },
+      {
+        title: "تكميم المعدة",
+        slug: "تكميم-المعدة",
+      },
+      {
+        title: "عملية استئصال المرارة",
+        slug: "عملية-استئصال-المرارة",
+      },
+      {
+        title: "تحويل المسار المصغر",
+        slug: "تحويل-المسار-المصغر",
+      },
+      {
+        title: "إصلاح الفتق بالمنظار",
+        slug: "إصلاح-الفتق-بالمنظار",
+      },
+      {
+        title: "عملية إصلاح الانفصال العضلي مع شد الجلد بدون شق جراحي (الميلا)",
+        slug: "إصلاح-الانفصال-العضلي",
+      },
+      {
+        title: "تحويل مسار المعدة الكلاسيكي",
+        slug: "تحويل-مسار-المعدة-الكلابيكي",
+      },
+    ],
+    en: [
+      {
+        title: "Deep Vein Thrombosis",
+        slug: "Deep-Vein-Thrombosis",
+      },
+      {
+        title: "Sleeve Gastrectomy",
+        slug: "Sleeve-Gastrectomy",
+      },
+      {
+        title: "Gallbladder Removal",
+        slug: "Gallbladder-Removal",
+      },
+      {
+        title: "Mini Gastric Bypass",
+        slug: "Mini-Gastric-Bypass",
+      },
+      {
+        title: "Laparoscopic Hernia Repair",
+        slug: "Laparoscopic-Hernia-Repair",
+      },
+      {
+        title: "Diastasis Recti Repair (MILA)",
+        slug: "Laparoscopic-Extraperitoneal-Abdominoplasty",
+      },
+      {
+        title: "Classic Gastric Bypass",
+        slug: "Classic-Gastric-Bypass",
+      },
+    ],
+  },
+};
