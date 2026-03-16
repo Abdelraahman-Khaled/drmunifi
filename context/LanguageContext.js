@@ -7,6 +7,7 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
     const [language, setLanguage] = useState(initialLanguage);
+    const [pathMap, setPathMap] = useState(null);
     const router = useRouter();
     const pathname = usePathname();
 
@@ -30,10 +31,13 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
     const toggleLanguage = () => {
         const newLang = language === 'ar' ? 'en' : 'ar';
         
+        // If a custom path map is provided (for dynamic slugs), use it
+        if (pathMap && pathMap[newLang]) {
+            router.push(pathMap[newLang]);
+            return;
+        }
+
         // Simple path replacement for static routes.
-        // For dynamic routes (blogs/operations), we might need a more complex logic, 
-        // but often redirecting to the index of that section in the new language is a safe fallback.
-        // Here we just replace the locale segment.
         const pathSegments = pathname.split('/');
         pathSegments[1] = newLang;
         const newPath = pathSegments.join('/') || `/${newLang}`;
@@ -42,7 +46,7 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
     };
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
+        <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, setPathMap }}>
             {children}
         </LanguageContext.Provider>
     );

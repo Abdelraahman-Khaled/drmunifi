@@ -1,39 +1,45 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useLanguage } from '../../../../../context/LanguageContext';
 import HeroSection from '../../../../components/HeroSection';
 import ScrollTicker from '../../../../components/ScrollTicker';
 import FAQ from '../../../../components/FAQ';
 
 const BlogDetailContent = ({ blog }) => {
-    const { language } = useLanguage();
+    const { language, setPathMap } = useLanguage();
     const router = useRouter();
-    const prevLanguage = useRef(language);
+    const params = useParams();
+    const urlSlug = params?.slug;
 
+    // Update path map for direct context switching (prevents double render on toggle)
+    useEffect(() => {
+        if (!blog) return;
+        setPathMap({
+            ar: `/ar/blogs/${blog.slug_ar || blog.slug}`,
+            en: `/en/blogs/${blog.slug || blog.slug_ar}`
+        });
+        
+        // Cleanup on unmount
+        return () => setPathMap(null);
+    }, [blog, setPathMap]);
+
+    // Secondary safety: redirect if manually entered wrong slug for language
     useEffect(() => {
         if (!blog) return;
 
-        // Only redirect if language effectively changed
-        if (prevLanguage.current === language) return;
-
-        // Update ref
-        prevLanguage.current = language;
-
-        // Determine target slug
         const targetSlug =
             language === "ar"
                 ? blog.slug_ar || blog.slug
-                : blog.slug || blog.slug_ar; // Assumes slug_ar/slug exist. Fallback logic.
+                : blog.slug || blog.slug_ar;
 
-        // Adjust prefix based on language.
-        const basePath = `/${language}/blogs`;
-
-        // Use replace to change URL without scroll
-        router.replace(`${basePath}/${targetSlug}`, { scroll: false });
-    }, [language, blog, router]);
+        if (urlSlug && decodeURIComponent(urlSlug) !== targetSlug) {
+            const basePath = `/${language}/blogs`;
+            router.replace(`${basePath}/${targetSlug}`, { scroll: false });
+        }
+    }, [language, blog, urlSlug, router]);
 
     // Helper to format content: add features-list class to uls, and checkmark icon to lis
     const formatContent = (htmlContent) => {

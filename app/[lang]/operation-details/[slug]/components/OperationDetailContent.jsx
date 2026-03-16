@@ -1,26 +1,34 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useLanguage } from '../../../../../context/LanguageContext';
 import HeroSection from '../../../../components/HeroSection';
 import ScrollTicker from '../../../../components/ScrollTicker';
 import BookingForm from '../../../../components/BookingForm';
 
 const OperationDetailContent = ({ operation }) => {
-    const { language } = useLanguage();
+    const { language, setPathMap } = useLanguage();
     const router = useRouter();
-    const prevLanguage = useRef(language);
+    const params = useParams();
+    const urlSlug = params?.slug;
 
+    // Update path map for direct context switching (prevents double render on toggle)
     useEffect(() => {
         if (!operation) return;
+        setPathMap({
+            ar: `/ar/operation-details/${operation.slug_ar || operation.slug}`,
+            en: `/en/operation-details/${operation.slug || operation.slug_ar}`
+        });
 
-        // Only redirect if language effectively changed
-        if (prevLanguage.current === language) return;
+        // Cleanup on unmount
+        return () => setPathMap(null);
+    }, [operation, setPathMap]);
 
-        // Update ref
-        prevLanguage.current = language;
+    // Secondary safety: redirect if manually entered wrong slug for language
+    useEffect(() => {
+        if (!operation) return;
 
         // Determine target slug
         const targetSlug =
@@ -28,12 +36,12 @@ const OperationDetailContent = ({ operation }) => {
                 ? operation.slug_ar || operation.slug
                 : operation.slug || operation.slug_ar;
 
-        // Construct new path
-        const basePath = `/${language}/operation-details`;
-
-        // Use replace to change URL without scroll
-        router.replace(`${basePath}/${targetSlug}`, { scroll: false });
-    }, [language, operation, router]);
+        // Check if current URL slug matches target slug (decoded for comparison)
+        if (urlSlug && decodeURIComponent(urlSlug) !== targetSlug) {
+            const basePath = `/${language}/operation-details`;
+            router.replace(`${basePath}/${targetSlug}`, { scroll: false });
+        }
+    }, [language, operation, urlSlug, router]);
 
     // Helper to format content: add features-list class to uls, and checkmark icon to lis
     const formatContent = (htmlContent) => {
