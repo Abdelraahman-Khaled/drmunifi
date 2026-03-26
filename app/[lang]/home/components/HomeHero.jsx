@@ -6,7 +6,7 @@ import { translations } from '../../../../context/translation'
 
 export const HomeHero = () => {
     const { language } = useLanguage();
-    const t = translations.home[language].hero;
+    const t = translations.home[language]?.hero || translations.home['ar'].hero;
     const isAr = language === 'ar';
 
     return (
