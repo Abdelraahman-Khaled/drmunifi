@@ -13,7 +13,7 @@ const HeroSection = ({ title, subTitle, subTitleLink, number }) => {
                 <div className="d-table-cell">
                     <div className="container">
                         <div className="page-title-content">
-                            <h2>{title}</h2>
+                            <h1>{title}</h1>
                             <ul>
                                 <li><Link href={navT.homeLink}>{navT.home}</Link></li>
                                 {
