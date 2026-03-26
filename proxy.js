@@ -18,7 +18,7 @@ export function proxy(request) {
   request.nextUrl.pathname = `/${locale}${pathname}`;
   
   // Example: /blogs -> /ar/blogs
-  return NextResponse.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl, { status: 301 });
 }
 
 export default proxy;

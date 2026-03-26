@@ -1,7 +1,7 @@
 import React from 'react'
 import { getBlogDetails } from '../../../api/blog';
 import BlogDetailContent from './components/BlogDetailContent';
-import { notFound } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
@@ -76,10 +76,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailsPage({ params }) {
-    const { slug: encodedSlug } = await params;
+    const { slug: encodedSlug, lang } = await params;
     const slug = decodeURIComponent(encodedSlug);
     const blog = await getBlog(slug);
-    if (!blog) notFound();
+    if (!blog) permanentRedirect(`/${lang}`);
 
     return (
         <>
