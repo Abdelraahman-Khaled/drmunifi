@@ -13,6 +13,7 @@ const BlogDetailContent = ({ blog }) => {
     const router = useRouter();
     const params = useParams();
     const urlSlug = params?.slug;
+    console.log(blog);
 
     // Update path map for direct context switching (prevents double render on toggle)
     useEffect(() => {
@@ -21,7 +22,7 @@ const BlogDetailContent = ({ blog }) => {
             ar: `/ar/blogs/${blog.slug_ar || blog.slug}`,
             en: `/en/blogs/${blog.slug || blog.slug_ar}`
         });
-        
+
         // Cleanup on unmount
         return () => setPathMap(null);
     }, [blog, setPathMap]);
@@ -56,6 +57,12 @@ const BlogDetailContent = ({ blog }) => {
         return formatted;
     };
 
+    // Helper to strip HTML tags for schema
+    const stripHtml = (html) => {
+        if (!html) return "";
+        return html.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim();
+    };
+
     // Render Logic
     const renderContent = () => {
         if (blog.contents && Array.isArray(blog.contents)) {
@@ -72,7 +79,7 @@ const BlogDetailContent = ({ blog }) => {
                                     <figure>
                                         <Image
                                             src={img.url}
-                                            alt={img.alt}
+                                            alt={(language === 'ar' ? img.alt_ar : img.alt_en) || img.alt || (language === 'ar' ? (blog.title_ar || 'صورة المدونة') : (blog.title_en || 'Blog image'))}
                                             width={1200}
                                             height={630}
                                             className="img-fluid rounded"
@@ -93,8 +100,28 @@ const BlogDetailContent = ({ blog }) => {
 
     if (!blog) return null;
 
+    // FAQ Schema Logic
+    const faqSchema = blog?.faqs?.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": blog.faqs.map(faq => ({
+            "@type": "Question",
+            "name": language === "ar" ? faq.question_ar : faq.question_en,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": stripHtml(language === "ar" ? faq.answer_ar : faq.answer_en)
+            }
+        }))
+    } : null;
+
     return (
         <>
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
             <HeroSection title={language === "ar" ? blog.title_ar : blog.title_en} subTitle={language === "ar" ? "المدونة" : "Blog"} subTitleLink={`/${language}/blogs`} number={2} />
             <ScrollTicker />
             <section className="blog-details-area ptb-100">
