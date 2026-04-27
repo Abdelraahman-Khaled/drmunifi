@@ -23,9 +23,9 @@ const OurApproach = () => {
                         />
 
                         <div className="approach-content pt-0">
-                            <a href="https://api.whatsapp.com/send?phone=966535195519" target="_blank" className="btn btn-primary">
+                            <a href="https://api.whatsapp.com/send?phone=966535195519" target="_blank" className="btn btn-primary" aria-label="Contact us on WhatsApp">
                                 {t.btn}
-                                <i className="flaticon-right-chevron"></i>
+                                <i className="flaticon-right-chevron" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -37,6 +37,7 @@ const OurApproach = () => {
                                 alt="approach"
                                 width={800}
                                 height={600}
+                                loading="lazy"
                             />
                         </div>
                     </div>

@@ -9,15 +9,16 @@ const OurVision = () => {
 
     return (
         <section className="our-vision-area ptb-100">
+            <h2 className="sr-only">{language === 'ar' ? 'القيم والرسالة والرؤية' : 'Values, Mission and Vision'}</h2>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-4 col-md-6 col-sm-6 mt-3">
                         <div className="single-vision-box">
                             <div className="icon">
-                                <i className="fi fi-rs-diamond"></i>
+                                <i className="fi fi-rs-diamond" aria-hidden="true"></i>
                             </div>
 
-                            <h3>{t.values.title}</h3>
+                            <h3 style={{ textWrap: 'balance' }}>{t.values.title}</h3>
                             <p>{t.values.desc}</p>
                         </div>
                     </div>
@@ -25,10 +26,10 @@ const OurVision = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6 mt-3">
                         <div className="single-vision-box">
                             <div className="icon">
-                                <i className="fi fi-rs-paper-plane"></i>
+                                <i className="fi fi-rs-paper-plane" aria-hidden="true"></i>
                             </div>
 
-                            <h3>{t.mission.title}</h3>
+                            <h3 style={{ textWrap: 'balance' }}>{t.mission.title}</h3>
                             <p>{t.mission.desc}</p>
                         </div>
                     </div>
@@ -36,10 +37,10 @@ const OurVision = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6 mt-3">
                         <div className="single-vision-box">
                             <div className="icon">
-                                <i className="fi fi-rr-vision"></i>
+                                <i className="fi fi-rr-vision" aria-hidden="true"></i>
                             </div>
 
-                            <h3>{t.vision.title}</h3>
+                            <h3 style={{ textWrap: 'balance' }}>{t.vision.title}</h3>
                             <p>{t.vision.desc}</p>
                         </div>
                     </div>

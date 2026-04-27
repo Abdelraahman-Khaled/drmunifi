@@ -8,10 +8,10 @@ import OurApproach from './components/OurApproach'
 export async function generateMetadata({ params }) {
     const lang = (await params).lang || 'ar';
     const isAr = lang === 'ar';
-    
+
     return {
         title: isAr ? "عن الدكتور عبدالله المنيفي - الخبرات والمؤهلات" : "About Dr. Abdullah AlMunifi - Experience & Qualifications",
-        description: isAr 
+        description: isAr
             ? "تعرف على مسيرة الدكتور عبدالله المنيفي المهنية، مؤهلاته العلمية، وخبرته الواسعة في جراحات السمنة والمناظير."
             : "Learn about Dr. Abdullah AlMunifi's career, scientific qualifications, and extensive experience in bariatric and laparoscopic surgeries.",
         alternates: {
@@ -29,7 +29,7 @@ const Page = async ({ params }) => {
     const isAr = lang === 'ar';
 
     return (
-        <>
+        <main id="main-content">
             <HeroSection
                 title={isAr ? "نبذة عن الدكتور" : "About The Doctor"}
                 subTitle={isAr ? "الرئيسية" : "Home"}
@@ -40,7 +40,7 @@ const Page = async ({ params }) => {
             <AboutHero />
             <OurVision />
             <OurApproach />
-        </>
+        </main>
     )
 }
 

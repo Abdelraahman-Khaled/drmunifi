@@ -137,7 +137,9 @@ a {
   font-weight: 400;
   line-height: 1.2em;
   text-transform: capitalize;
-  transition: all 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
   padding: 10px 20px;
   overflow: hidden;
 }
@@ -160,8 +162,10 @@ a {
 }
 .post-featured-image img {
   object-fit: cover;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   border-radius: 30px;
+  height: 243px;
+  object-position: top;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
@@ -206,7 +210,9 @@ a {
   background-color: #030b58; /* Theme secondary color */
   margin-top: 3px;
   border-radius: 1px;
-  transition: all 0.3s;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
 }
 
 .icon-bar:first-child {
@@ -244,7 +250,10 @@ a {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 0 0 5px 5px;
-  transition: all 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
   transform: translateY(10px);
 }
 
@@ -264,7 +273,10 @@ a {
   color: #444 !important;
   font-size: 15px !important;
   font-weight: 500 !important;
-  transition: all 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    padding 0.3s ease;
 }
 .dropdown-menu .nav-item .nav-link:hover {
   color: var(--main-color) !important;
@@ -293,3 +305,107 @@ a {
 [dir="ltr"] .fovia-nav .navbar .navbar-nav .nav-item .dropdown-menu li a {
   text-align: left;
 }
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: whatsapp-pulse 2s infinite;
+}
+
+[dir="rtl"] .floating-whatsapp {
+  right: auto;
+  left: 30px;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+  background-color: #128c7e;
+  color: #fff;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  bottom: 70px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.floating-whatsapp:hover .whatsapp-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Scroll to Top Button */
+.go-top {
+  position: fixed;
+  cursor: pointer;
+  bottom: 30px;
+  left: 30px;
+  color: #ffffff;
+  background-color: #030b58;
+  z-index: 9999;
+  width: 45px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s, background-color 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+[dir="rtl"] .go-top {
+  left: auto;
+  right: 30px;
+}
+
+
+.go-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.go-top:hover {
+  background-color: #3dde9e;
+  color: #fff;
+}
+
+.go-top i {
+  font-size: 20px;
+}
+
+

@@ -24,6 +24,28 @@ const Footer = () => {
         fetchOperations();
     }, []);
 
+    const [showGoTop, setShowGoTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 600) {
+                setShowGoTop(true);
+            } else {
+                setShowGoTop(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     const getLocalizedPath = (path) => {
         if (path.startsWith('http') || path.startsWith('#')) return path;
         // If path already starts with /ar or /en, return it
@@ -92,6 +114,8 @@ const Footer = () => {
                                         className="fab fa-youtube"></i></Link></li>
                                     <li><Link target="_blank" href="https://www.instagram.com/DrAlMunifi"><i
                                         className="fab fa-instagram"></i></Link></li>
+                                    <li><Link target="_blank" href={navT.whatsapp}><i
+                                        className="fab fa-whatsapp"></i></Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -104,7 +128,11 @@ const Footer = () => {
             </section>
             {/* <!-- End Footer Area --> */}
 
-            <div className="go-top">
+            <div 
+                className={`go-top ${showGoTop ? 'active' : ''}`}
+                onClick={scrollToTop}
+                style={{ cursor: 'pointer' }}
+            >
                 <i className="fas fa-chevron-up"></i>
             </div>
         </>

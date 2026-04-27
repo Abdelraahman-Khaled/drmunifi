@@ -57,13 +57,13 @@ export async function generateMetadata({ params }) {
         title: `Dr Al Munifi | ${title}`,
         description,
         icons: {
-            icon: '/assets/img/favicon.png',
-            shortcut: '/assets/img/favicon.png',
+            icon: '/assets/img/favicon.svg',
+            shortcut: '/assets/img/favicon.svg',
         },
         openGraph: {
             title: `Dr Al Munifi | ${title}`,
             description,
-            images: blog.photo_url ? [blog.photo_url] : ["/assets/img/favicon.png"],
+            images: blog.photo_url ? [blog.photo_url] : ["/assets/img/favicon.svg"],
         },
         alternates: {
             canonical: `https://almunifi.com/${lang}/blogs/${isAr ? blog.slug_ar : blog.slug}`,

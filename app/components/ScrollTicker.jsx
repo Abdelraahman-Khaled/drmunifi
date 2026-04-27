@@ -15,9 +15,10 @@ const ScrollTicker = () => {
                 <span key={index}>
                     <Image
                         src="/assets/img/asterisk-icon.svg"
-                        alt={item}
+                        alt=""
                         width={20}
                         height={20}
+                        aria-hidden="true"
                     />
                     {item}
                 </span>
@@ -26,7 +27,7 @@ const ScrollTicker = () => {
     );
 
     return (
-        <div className="our-scrolling-ticker">
+        <section className="our-scrolling-ticker" aria-label={language === 'ar' ? 'شريط التخصصات' : 'Specialties Ticker'}>
             <div className="scrolling-ticker-box">
                 <div className="scrolling-content">
                     <TickerItems />
@@ -40,7 +41,7 @@ const ScrollTicker = () => {
                     <TickerItems />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

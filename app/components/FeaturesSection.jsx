@@ -10,7 +10,7 @@ const FeaturesSection = ({ title, subTitle, desc, list, cards, className }) => {
                     list.map((skill, index) => (
                         <li key={index}>
                             <span>
-                                <i className="flaticon-check-mark"></i>
+                                <i className="flaticon-check-mark" aria-hidden="true"></i>
                                 {skill}
                             </span>
                         </li>
@@ -19,7 +19,7 @@ const FeaturesSection = ({ title, subTitle, desc, list, cards, className }) => {
                     cards.map((item, index) => (
                         <li key={index}>
                             <div className="icon">
-                                <i className={item.icon || "flaticon-doctor"}></i>
+                                <i className={item.icon || "flaticon-doctor"} aria-hidden="true"></i>
                             </div>
                             <span>{item.title}</span>
                             {item.sub}

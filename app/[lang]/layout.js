@@ -5,16 +5,19 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
 import MagicCursor from "../components/MagicCursor";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import Script from "next/script";
 
 export async function generateMetadata({ params }) {
-  const lang = (await params).lang || 'ar';
-  const isAr = lang === 'ar';
+  const lang = (await params).lang || "ar";
+  const isAr = lang === "ar";
 
   return {
     metadataBase: new URL("https://almunifi.com"),
     title: {
-      default: isAr ? "الدكتور عبدالله المنيفي - جراحة السمنة والمناظير" : "Dr. Abdullah AlMunifi - Bariatric & Laparoscopic Surgery",
+      default: isAr
+        ? "الدكتور عبدالله المنيفي - جراحة السمنة والمناظير"
+        : "Dr. Abdullah AlMunifi - Bariatric & Laparoscopic Surgery",
     },
     alternates: {
       canonical: `/${lang}`,
@@ -27,8 +30,20 @@ export async function generateMetadata({ params }) {
       ? "الدكتور عبدالله المنيفي استشاري جراحة السمنة والمناظير المتقدمة. متخصص في تكميم المعدة، تحويل المسار، والحلول الجراحية الدقيقة للسمنة في المملكة العربية السعودية."
       : "Dr. Abdullah AlMunifi, Consultant in Bariatric and Advanced Laparoscopic Surgery. Specialist in Gastric Sleeve, Bypass, and precise surgical solutions for obesity in Saudi Arabia.",
     keywords: isAr
-      ? ["جراحة السمنة", "تكميم المعدة", "تحويل المسار", "دكتور عبدالله المنيفي", "السعودية"]
-      : ["Bariatric Surgery", "Gastric Sleeve", "Bypass", "Dr. Abdullah AlMunifi", "Saudi Arabia"],
+      ? [
+          "جراحة السمنة",
+          "تكميم المعدة",
+          "تحويل المسار",
+          "دكتور عبدالله المنيفي",
+          "السعودية",
+        ]
+      : [
+          "Bariatric Surgery",
+          "Gastric Sleeve",
+          "Bypass",
+          "Dr. Abdullah AlMunifi",
+          "Saudi Arabia",
+        ],
     authors: [{ name: "Dr. Abdullah AlMunifi" }],
     creator: "Dr. Abdullah AlMunifi",
     publisher: "Dr. Abdullah AlMunifi",
@@ -49,7 +64,9 @@ export async function generateMetadata({ params }) {
       alternateLocale: isAr ? "en_US" : "ar_SA",
       url: `https://almunifi.com/${lang}`,
       siteName: "Dr. Abdullah AlMunifi",
-      title: isAr ? "الدكتور عبدالله المنيفي - خيارك الأول لجراحة السمنة" : "Dr. Abdullah AlMunifi - Your Top Choice for Bariatric Surgery",
+      title: isAr
+        ? "الدكتور عبدالله المنيفي - خيارك الأول لجراحة السمنة"
+        : "Dr. Abdullah AlMunifi - Your Top Choice for Bariatric Surgery",
       description: isAr
         ? "استشاري جراحة السمنة والمناظير المتقدمة. نقدم رعاية طبية متكاملة لمرضى السمنة بأحدث التقنيات."
         : "Consultant in Bariatric and Advanced Laparoscopic Surgery. Providing comprehensive medical care for obesity patients with the latest technologies.",
@@ -65,21 +82,23 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title: isAr ? "الدكتور عبدالله المنيفي" : "Dr. Abdullah AlMunifi",
-      description: isAr ? "استشاري جراحة السمنة والمناظير المتقدمة." : "Consultant in Bariatric and Advanced Laparoscopic Surgery.",
+      description: isAr
+        ? "استشاري جراحة السمنة والمناظير المتقدمة."
+        : "Consultant in Bariatric and Advanced Laparoscopic Surgery.",
       images: ["/assets/img/about-img1.webp"],
       creator: "@DrAlMunifi",
     },
     icons: {
-      icon: "/assets/img/favicon.png",
-      shortcut: "/assets/img/favicon.png",
-      apple: "/assets/img/favicon.png",
+      icon: "/assets/img/favicon.svg",
+      shortcut: "/assets/img/favicon.svg",
+      apple: "/assets/img/favicon.svg",
     },
   };
 }
 
 export default async function RootLayout({ children, params }) {
-  const lang = (await params).lang || 'ar';
-  const dir = lang === 'ar' ? 'rtl' : 'ltr';
+  const lang = (await params).lang || "ar";
+  const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
     <html lang={lang} dir={dir} suppressHydrationWarning>
@@ -92,9 +111,11 @@ export default async function RootLayout({ children, params }) {
           rel="stylesheet"
           href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
         />
-        <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
         <link rel="stylesheet" href="/assets/css/style.css" />
-        {lang === 'ar' && <link rel="stylesheet" href="/assets/css/style-ar.css" />}
+        {lang === "ar" && (
+          <link rel="stylesheet" href="/assets/css/style-ar.css" />
+        )}
         <meta
           name="google-site-verification"
           content="8Cw1icN49KSSlD_rZ7O6lRWcDdrI7eT-trjQ_-3Zy88"
@@ -123,6 +144,7 @@ export default async function RootLayout({ children, params }) {
 
         <LanguageProvider initialLanguage={lang}>
           <MagicCursor />
+          <FloatingWhatsApp />
           <Preloader />
           <Navbar />
           {children}

@@ -66,6 +66,7 @@ const jsonLd = {
         'https://www.instagram.com/DrAlMunifi',
         'https://www.youtube.com/@DrAlMunifi',
         'https://www.tiktok.com/@DrAlMunifi',
+        'https://api.whatsapp.com/send?phone=966535195519',
     ],
 };
 

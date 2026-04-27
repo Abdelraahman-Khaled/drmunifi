@@ -47,7 +47,7 @@ const Preloader = () => {
                 <div className="loading"></div>
                 <div id="loading-icon">
                     <Image
-                        src="/assets/img/favicon.png"
+                        src="/assets/img/favicon.svg"
                         alt="Preloader Icon"
                         width={50}
                         height={50}

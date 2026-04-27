@@ -151,7 +151,7 @@ export const translations = {
           {
             title_ar: "تكميم المعدة",
             description_ar:
-              "تكميم المعدة واحدة من أكثر جراحات السمنة شيوعاً في العالم وتتميز بفعاليتها الكبيرة في إنقاص الوزن ويتم فيها استئصال جزء...",
+              "تكميم المعدة واحدة من أكثر جراحات السمنة شيوعاً في العالم وتتميز بفعاليتها الكبيرة في إنقاص الوزن ويتم فيها استئصال جزء…",
             cardImage: "/assets/img/icons/تكميم المعدة.webp",
             slug_ar: "تكميم-المعدة",
           },
@@ -165,7 +165,7 @@ export const translations = {
           {
             title_ar: "تحويل المسار المصغر",
             description_ar:
-              "تحويل المسار المصغر هو إجراء أبسط من تحويل المسار التقليدي ولكنه يوفر نتائج مماثلة في إنقاص الوزن ويتم فيه...",
+              "تحويل المسار المصغر هو إجراء أبسط من تحويل المسار التقليدي ولكنه يوفر نتائج مماثلة في إنقاص الوزن ويتم فيه…",
             cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
             slug_ar: "تحويل-المسار-المصغر",
           },
@@ -189,6 +189,24 @@ export const translations = {
             feedback:
               "تسلم أياديكم على الشغل الممتاز. نظافة، دقة، والتزام كامل بالموعد. شكرًا لكم.",
             image: "/assets/img/client-image/2.png",
+          },
+          {
+            name: "سارة الشمري",
+            feedback:
+              "تجربة رائعة غيرت حياتي للأفضل. الدكتور وفريقه قمة في الرقي والاحترافية.",
+            image: "/assets/img/client-image/1.png",
+          },
+          {
+            name: "خالد الحربي",
+            feedback:
+              "كنت متخوفاً من العملية ولكن الدكتور شرح لي كل التفاصيل والنتائج كانت مذهلة.",
+            image: "/assets/img/client-image/2.png",
+          },
+          {
+            name: "نورة الدوسري",
+            feedback:
+              "أفضل قرار اتخذته هو المجيء لهذا المركز. الرعاية بعد العملية كانت استثنائية.",
+            image: "/assets/img/client-image/1.png",
           },
         ],
       },
@@ -241,7 +259,7 @@ export const translations = {
           {
             titleBlog: "تجلط الأوردة العميقة",
             description:
-              "هي حالة طبية خطيرة تحدث عندما تتشكل جلطة دموية في الأوردة العميقة، غالبًا تكون في الأطراف السفلية مثل...",
+              "هي حالة طبية خطيرة تحدث عندما تتشكل جلطة دموية في الأوردة العميقة، غالبًا تكون في الأطراف السفلية مثل…",
             image: "/assets/img/blog/1.webp",
             slug: "تجلط-الأوردة-العميقة",
           },
@@ -402,7 +420,7 @@ export const translations = {
           {
             title_en: "Sleeve Gastrectomy",
             description_en:
-              "Gastric sleeve is one of the most common bariatric surgeries in the world and is characterized by its high effectiveness in losing weight by removing a part...",
+              "Gastric sleeve is one of the most common bariatric surgeries in the world and is characterized by its high effectiveness in losing weight by removing a part…",
             cardImage: "/assets/img/icons/تكميم المعدة.webp",
             slug: "Sleeve-Gastrectomy",
           },
@@ -416,7 +434,7 @@ export const translations = {
           {
             title_en: "Mini Gastric Bypass",
             description_en:
-              "Mini gastric bypass is a simpler procedure than traditional gastric bypass but provides similar weight loss results and is done in...",
+              "Mini gastric bypass is a simpler procedure than traditional gastric bypass but provides similar weight loss results and is done in…",
             cardImage: "/assets/img/icons/تحويل المسار المصغر.webp",
             slug: "Mini-Gastric-Bypass",
           },
@@ -484,6 +502,24 @@ export const translations = {
               "Good luck with the excellent work. Cleanliness, accuracy, and full commitment to the appointment. Thank you.",
             image: "/assets/img/client-image/2.png",
           },
+          {
+            name: "Sarah Al-Shammari",
+            feedback:
+              "A wonderful experience that changed my life for the better. The doctor and his team are highly professional and sophisticated.",
+            image: "/assets/img/client-image/1.png",
+          },
+          {
+            name: "Khaled Al-Harbi",
+            feedback:
+              "I was afraid of the procedure, but the doctor explained all the details and the results were amazing.",
+            image: "/assets/img/client-image/2.png",
+          },
+          {
+            name: "Nora Al-Dossary",
+            feedback:
+              "The best decision I made was coming to this center. The post-operative care was exceptional.",
+            image: "/assets/img/client-image/1.png",
+          },
         ],
       },
       blog: {
@@ -494,7 +530,7 @@ export const translations = {
           {
             titleBlog: "Deep Vein Thrombosis (DVT)",
             description:
-              "It is a serious medical condition that occurs when a blood clot forms in the deep veins, often in the lower extremities such as...",
+              "It is a serious medical condition that occurs when a blood clot forms in the deep veins, often in the lower extremities such as…",
             image: "/assets/img/blog/1.webp",
             slug: "/تجلط-الأوردة-العميقة",
           },
@@ -521,6 +557,7 @@ export const translations = {
       blogLink: "/blogs",
       contactLink: "/contact",
       langLink: "/",
+      whatsapp: "https://api.whatsapp.com/send?phone=966535195519",
     },
     en: {
       phone: "+966 53 519 5519",
@@ -539,6 +576,7 @@ export const translations = {
       blogLink: "/blogs",
       contactLink: "/contact",
       langLink: "/",
+      whatsapp: "https://api.whatsapp.com/send?phone=966535195519",
     },
   },
   footer: {
@@ -658,20 +696,24 @@ export const translations = {
         eduList: [
           {
             title: "بكالوريوس في الطب والجراحة",
-            sub: "جامعة الملك سعود، الرياض (2010)",
+            sub: "جامعة الملك سعود، الرياض",
           },
           {
             title: "الدبلوم العالي في جراحة المناظير المتقدمة",
-            sub: "جامعة باريس XI، فرنسا (2016)",
+            sub: "جامعة باريس XI، فرنسا",
+          },
+          {
+            title: "دبلوم جراحة السمنة والأيض",
+            sub: "جمعية جراحة السمنة والأيض الفرنسية، جامعة كوت دازور، نيس، فرنسا",
           },
           {
             title: "البورد الفرنسي في الجراحة العامة وجراحة الجهاز الهضمي",
-            sub: "جامعة كوت دازور، نيس، فرنسا (2018)",
+            sub: "جامعة كوت دازور، نيس، فرنسا",
           },
           {
             title:
               "الزمالة الكندية في جراحة السمنة والمناظير المتقدمة والروبوت",
-            sub: "جامعة مونتريال، كندا (2022)",
+            sub: "جامعة مونتريال، كندا",
           },
         ],
       },
@@ -740,21 +782,25 @@ export const translations = {
         eduList: [
           {
             title: "Bachelor of Medicine and Surgery",
-            sub: "King Saud University, Riyadh (2010)",
+            sub: "King Saud University, Riyadh",
           },
           {
             title: "Advanced Diploma in Advanced Laparoscopic Surgery",
-            sub: "Paris XI University, Paris, France (2016)",
+            sub: "Paris XI University, Paris, France",
+          },
+          {
+            title: "Diploma in Bariatric and Metabolic Surgery",
+            sub: "French Society for Bariatric and Metabolic Surgery, Côte d’Azur University, Nice, France",
           },
           {
             title:
               "French Board in General Surgery and Gastrointestinal Surgery",
-            sub: "Côte d’Azur University, Nice, France (2018)",
+            sub: "Côte d’Azur University, Nice, France",
           },
           {
             title:
               "Canadian Fellowship in Bariatric Surgery, Advanced Laparoscopy, and Robotic Surgery",
-            sub: "University of Montreal, Canada (2022)",
+            sub: "University of Montreal, Canada",
           },
         ],
       },
@@ -790,7 +836,7 @@ export const translations = {
   error404: {
     ar: {
       title: "404",
-      subTitle: "المعذرة... الصفحة غير موجودة",
+      subTitle: "المعذرة… الصفحة غير موجودة",
       desc: "الصفحة التي تبحث عنها قد تمت إزالتها أو تغيير اسمها أو غير متاحة مؤقتاً.",
       btn: "الرجوع للصفحة الرئيسية",
     },
@@ -809,7 +855,7 @@ export const translations = {
       email: "البريد الإلكتروني",
       phone: "رقم الهاتف",
       subject: "الموضوع",
-      message: "اكتب رسالتك هنا...",
+      message: "اكتب رسالتك هنا…",
       send: "إرسال رسالة",
       emailLabel: "بريد إلكتروني",
       phoneLabel: "هاتف",
@@ -822,7 +868,7 @@ export const translations = {
       email: "Email",
       phone: "Phone Number",
       subject: "Subject",
-      message: "Write your message here...",
+      message: "Write your message here…",
       send: "Send Message",
       emailLabel: "Email",
       phoneLabel: "Phone",
@@ -837,7 +883,7 @@ export const translations = {
       graphic_design_label: "التصميم الجرافيكي",
       digital_marketing_label: "التسويق الرقمي",
       e_commerce_label: "التجارة الإلكترونية",
-      loading_articles: "جاري تحميل المقالات...",
+      loading_articles: "جاري تحميل المقالات…",
       no_articles_found: "لا توجد مقالات لعرضها حالياً.",
       read_article: "اقرأ المزيد",
     },
@@ -848,7 +894,7 @@ export const translations = {
       graphic_design_label: "Graphic Design",
       digital_marketing_label: "Digital Marketing",
       e_commerce_label: "E-Commerce",
-      loading_articles: "Loading articles...",
+      loading_articles: "Loading articles…",
       no_articles_found: "No articles found.",
       read_article: "Read More",
     },
@@ -862,7 +908,7 @@ export const translations = {
       selectOperation: "اختر العملية",
       message: "نبذه عن الموضوع",
       send: "احجز الآن",
-      loading: "جاري الإرسال...",
+      loading: "جاري الإرسال…",
       success: "تم إرسال طلبك بنجاح! سنتواصل معك قريباً.",
       error: "حدث خطأ ما، يرجى المحاولة مرة أخرى.",
     },
@@ -874,7 +920,7 @@ export const translations = {
       selectOperation: "Select Operation",
       message: "Brief about the topic",
       send: "Book Now",
-      loading: "Sending...",
+      loading: "Sending…",
       success:
         "Your request has been sent successfully! We will contact you soon.",
       error: "Something went wrong, please try again.",

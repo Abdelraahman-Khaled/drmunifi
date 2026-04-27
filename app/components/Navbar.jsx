@@ -130,6 +130,11 @@ const Navbar = () => {
                                             <i className="fab fa-instagram"></i>
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link target="_blank" href={t.whatsapp}>
+                                            <i className="fab fa-whatsapp"></i>
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
