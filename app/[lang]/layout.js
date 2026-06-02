@@ -111,7 +111,6 @@ export default async function RootLayout({ children, params }) {
           rel="stylesheet"
           href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css"
         />
-        <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
         <link rel="stylesheet" href="/assets/css/style.css" />
         {lang === "ar" && (
           <link rel="stylesheet" href="/assets/css/style-ar.css" />
