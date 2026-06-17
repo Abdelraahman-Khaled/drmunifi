@@ -2,12 +2,16 @@ export default function robots() {
   return {
     rules: {
       userAgent: "*",
-      // Allow the favicon + render-critical assets (CSS/JS) so Google can
-      // fetch the icon and correctly render the page. Longest-match wins,
+      // Allow images (favicon + everything in the image-sitemap) and
+      // render-critical assets (CSS/JS) so Google can fetch the icon,
+      // index images, and correctly render pages. Longest-match wins,
       // so these override the broader /assets/ disallow below.
-      allow: ["/", "/assets/img/favicon.svg", "/assets/css/", "/assets/js/"],
+      allow: ["/", "/assets/img/", "/assets/css/", "/assets/js/"],
       disallow: ["/admin", "/cdn-cgi/", "/api/", "/assets/"],
     },
-    sitemap: "https://almunifi.com/sitemap.xml",
+    sitemap: [
+      "https://almunifi.com/sitemap.xml",
+      "https://almunifi.com/image-sitemap.xml",
+    ],
   };
 }

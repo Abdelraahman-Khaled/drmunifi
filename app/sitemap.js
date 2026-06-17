@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export default async function sitemap() {
   const baseUrl = "https://almunifi.com";
-  const currentDate = new Date().toISOString().split("T")[0];
+  const currentDate = new Date().toISOString();
   const locales = ["ar", "en"];
 
   // 1. الصفحات الثابتة
@@ -26,7 +26,7 @@ export default async function sitemap() {
     staticPages.push({
       url: arUrl,
       lastModified: currentDate,
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: route === "" ? 1 : 0.8,
     });
 
@@ -34,7 +34,7 @@ export default async function sitemap() {
     staticPages.push({
       url: enUrl,
       lastModified: currentDate,
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: route === "" ? 1 : 0.8,
     });
   });
@@ -51,24 +51,24 @@ export default async function sitemap() {
 
       const englishUrl = `${baseUrl}/en/operation-details/${englishSlug}`;
       const arabicUrl = `${baseUrl}/ar/operation-details/${arabicSlug}`;
-      const lastMod = new Date(op.updated_at || op.created_at || new Date())
-        .toISOString()
-        .split("T")[0];
+      const lastMod = new Date(
+        op.updated_at || op.created_at || new Date()
+      ).toISOString();
 
       // Arabic entry
       operationPages.push({
         url: arabicUrl,
         lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: 0.7,
+        changeFrequency: "daily",
+        priority: 0.51,
       });
 
       // English entry
       operationPages.push({
         url: englishUrl,
         lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: 0.7,
+        changeFrequency: "daily",
+        priority: 0.51,
       });
     });
   } catch (error) {
@@ -87,24 +87,24 @@ export default async function sitemap() {
 
       const englishUrl = `${baseUrl}/en/blogs/${englishSlug}`;
       const arabicUrl = `${baseUrl}/ar/blogs/${arabicSlug}`;
-      const lastMod = new Date(blog.updated_at || blog.created_at || new Date())
-        .toISOString()
-        .split("T")[0];
+      const lastMod = new Date(
+        blog.updated_at || blog.created_at || new Date()
+      ).toISOString();
 
       // Arabic entry
       blogPages.push({
         url: arabicUrl,
         lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: 0.7,
+        changeFrequency: "daily",
+        priority: 0.64,
       });
 
       // English entry
       blogPages.push({
         url: englishUrl,
         lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: 0.7,
+        changeFrequency: "daily",
+        priority: 0.64,
       });
     });
   } catch (error) {

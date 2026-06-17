@@ -26,6 +26,6 @@ export default proxy;
 export const config = {
   matcher: [
     // Skip all internal paths (_next, assets, api)
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|robots.txt|sitemap.xml|llms.txt).*)',
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|robots.txt|sitemap.xml|image-sitemap.xml|llms.txt).*)',
   ],
 };
