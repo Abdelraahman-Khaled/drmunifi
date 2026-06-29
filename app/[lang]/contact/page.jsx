@@ -17,6 +17,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: 'https://almunifi.com/ar/contact',
                 en: 'https://almunifi.com/en/contact',
+                'x-default': 'https://almunifi.com/ar/contact',
             },
         },
         openGraph: {

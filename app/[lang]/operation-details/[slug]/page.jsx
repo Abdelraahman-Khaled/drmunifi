@@ -67,6 +67,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: `https://almunifi.com/ar/operation-details/${operation.slug_ar}`,
                 en: `https://almunifi.com/en/operation-details/${operation.slug}`,
+                'x-default': `https://almunifi.com/ar/operation-details/${operation.slug_ar}`,
             }
         }
     }

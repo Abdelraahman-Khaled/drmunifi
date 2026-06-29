@@ -18,6 +18,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: 'https://almunifi.com/ar/blogs',
                 en: 'https://almunifi.com/en/blogs',
+                'x-default': 'https://almunifi.com/ar/blogs',
             },
         },
         openGraph: {

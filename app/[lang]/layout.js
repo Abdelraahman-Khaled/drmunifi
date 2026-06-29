@@ -1,7 +1,6 @@
 import "../globals.css";
 import { LanguageProvider } from "../../context/LanguageContext";
 import Navbar from "../components/Navbar";
-import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
 import MagicCursor from "../components/MagicCursor";
@@ -24,6 +23,7 @@ export async function generateMetadata({ params }) {
       languages: {
         ar: "/ar",
         en: "/en",
+        "x-default": "/ar",
       },
     },
     description: isAr

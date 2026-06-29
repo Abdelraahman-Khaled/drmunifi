@@ -70,6 +70,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: `https://almunifi.com/ar/blogs/${blog.slug_ar}`,
                 en: `https://almunifi.com/en/blogs/${blog.slug}`,
+                'x-default': `https://almunifi.com/ar/blogs/${blog.slug_ar}`,
             }
         }
     }

@@ -18,6 +18,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: 'https://almunifi.com/ar/types-of-operations',
                 en: 'https://almunifi.com/en/types-of-operations',
+                'x-default': 'https://almunifi.com/ar/types-of-operations',
             },
         },
         openGraph: {

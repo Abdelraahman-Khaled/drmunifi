@@ -1,7 +1,8 @@
 import { getBlogs } from "./api/blog";
 import { getOperations } from "./api/operations";
 
-export const dynamic = "force-dynamic";
+// كاش لمدة ساعة بدل إعادة البناء عند كل طلب (أسرع وأثبت لجوجل)
+export const revalidate = 3600;
 
 export default async function sitemap() {
   const baseUrl = "https://almunifi.com";

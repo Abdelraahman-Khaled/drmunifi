@@ -11,6 +11,7 @@ import HomeOperations from './home/components/HomeOperations'
 import HomeFeedback from './home/components/HomeFeedback'
 import HomeFAQ from './home/components/HomeFAQ'
 import HomeBlog from './home/components/HomeBlog'
+import { getFaqs } from '../api/FAQ'
 
 export async function generateMetadata({ params }) {
     const lang = (await params).lang || 'ar';
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }) {
             languages: {
                 ar: 'https://almunifi.com/ar',
                 en: 'https://almunifi.com/en',
+                'x-default': 'https://almunifi.com/ar',
             },
         }
     };
@@ -70,8 +72,40 @@ const jsonLd = {
     ],
 };
 
+const stripHtml = (s) =>
+    (s || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
 const Page = async ({ params }) => {
     const lang = (await params).lang || 'ar';
+    const isAr = lang === 'ar';
+
+    // جلب الأسئلة من الـ API لإصدار سكيمة FAQPage في الـ SSR (AEO)
+    let faqs = [];
+    try {
+        faqs = (await getFaqs()) || [];
+    } catch (error) {
+        console.error('Failed to fetch FAQs for schema:', error);
+    }
+
+    const faqEntities = faqs
+        .map((item) => ({
+            '@type': 'Question',
+            name: isAr ? item.question_ar : item.question_en,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: stripHtml(isAr ? item.answer_ar : item.answer_en),
+            },
+        }))
+        .filter((q) => q.name && q.acceptedAnswer.text);
+
+    const faqJsonLd =
+        faqEntities.length > 0
+            ? {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: faqEntities,
+              }
+            : null;
 
     return (
         <>
@@ -79,6 +113,12 @@ const Page = async ({ params }) => {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+            {faqJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+                />
+            )}
             <div>
                 <HomeHero />
                 <ScrollTicker />
