@@ -54,14 +54,14 @@ export async function generateMetadata({ params }) {
         : (blog.meta_description_en || blog.description_en);
 
     return {
-        title: `Dr Al Munifi | ${title}`,
+        title,
         description,
         icons: {
             icon: '/assets/img/favicon.svg',
             shortcut: '/assets/img/favicon.svg',
         },
         openGraph: {
-            title: `Dr Al Munifi | ${title}`,
+            title,
             description,
             images: blog.photo_url ? [blog.photo_url] : ["/assets/img/favicon.svg"],
         },

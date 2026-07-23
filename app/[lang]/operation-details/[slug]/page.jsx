@@ -51,14 +51,14 @@ export async function generateMetadata({ params }) {
         : (operation.meta_description_en || operation.description_en);
 
     return {
-        title: `Dr Al Munifi | ${title}`,
+        title,
         description,
         icons: {
             icon: '/assets/img/favicon.svg',
             shortcut: '/assets/img/favicon.svg',
         },
         openGraph: {
-            title: `Dr Al Munifi | ${title}`,
+            title,
             description,
             images: operation.photo_url ? [operation.photo_url] : ["/assets/img/favicon.svg"],
         },

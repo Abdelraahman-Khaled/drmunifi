@@ -123,6 +123,12 @@ const Footer = () => {
 
                     <div className="copyright-area">
                         <p>{t.copyright}</p>
+                        <p>
+                            {t.designedByPrefix}{' '}
+                            <Link href="https://mila-knight.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#4fc3f7', fontWeight: 600 }}>
+                                {t.designedByLink}
+                            </Link>
+                        </p>
                     </div>
                 </div>
             </section>

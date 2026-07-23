@@ -589,6 +589,8 @@ export const translations = {
       operations: "العمليات",
       socialMedia: "التواصل الاجتماعي",
       copyright: "جميع الحقوق محفوظة © 2026 للدكتور عبدالله المنيفي.",
+      designedByPrefix: "تم تصميم الموقع بواسطة شركة ميلانايت",
+      designedByLink: "شركة تسويق رقمي في السعودية",
       operationList: [
         { name: "تكميم المعدة", link: "/operation-details/تكميم-المعدة" },
         {
@@ -622,6 +624,8 @@ export const translations = {
       operations: "Operations",
       socialMedia: "Social Media",
       copyright: "All rights reserved © 2026 for Dr. Abdullah Al-Munifi.",
+      designedByPrefix: "Website designed by MilaKnight,",
+      designedByLink: "a digital marketing company in Saudi Arabia",
       operationList: [
         {
           name: "Sleeve Gastrectomy",
@@ -886,6 +890,7 @@ export const translations = {
       loading_articles: "جاري تحميل المقالات…",
       no_articles_found: "لا توجد مقالات لعرضها حالياً.",
       read_article: "اقرأ المزيد",
+      load_more: "عرض المزيد",
     },
     en: {
       all_articles: "All Articles",
@@ -897,6 +902,7 @@ export const translations = {
       loading_articles: "Loading articles…",
       no_articles_found: "No articles found.",
       read_article: "Read More",
+      load_more: "Load More",
     },
   },
   bookingForm: {

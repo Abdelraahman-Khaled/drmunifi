@@ -1,12 +1,19 @@
 "use client";
+import { useState } from "react";
 import { useLanguage } from "../../../../context/LanguageContext";
 import { translations } from "../../../../context/translation";
 import BlogContent from "./BlogContent";
+
+const PAGE_SIZE = 9;
 
 const BlogsContainer = ({ initialBlogs }) => {
     const { language } = useLanguage();
     // const [activeFilter, setActiveFilter] = useState("*");
     const blogsList = initialBlogs || [];
+    const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+    const visibleBlogs = blogsList.slice(0, visibleCount);
+    const hasMore = visibleCount < blogsList.length;
 
     // Fallback for translations if not yet added to translation.js
     const t_data = translations.blogsPage?.[language] || {};
@@ -64,7 +71,7 @@ const BlogsContainer = ({ initialBlogs }) => {
 
                 <div className="row">
                     <>
-                        {blogsList.map((blog) => {
+                        {visibleBlogs.map((blog) => {
                             const blogImage = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.url || blog.photos?.[0]?.url || blog.image || blog.photo_url;
                             const blogAlt = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic)?.alt || blog.photos?.[0]?.alt || blog.alt || blog.alt_url;
 
@@ -91,6 +98,20 @@ const BlogsContainer = ({ initialBlogs }) => {
                         )}
                     </>
                 </div>
+
+                {hasMore && (
+                    <div className="row">
+                        <div className="col-12 text-center mt-4">
+                            <button
+                                type="button"
+                                className="btn btn-primary px-5 py-3"
+                                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                            >
+                                {t("load_more")}
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

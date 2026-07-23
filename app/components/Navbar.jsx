@@ -206,7 +206,7 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="d-block d-lg-none w-fit-content nav-item">
-                                        <Link href={getLocalizedPath('/contact')} className="btn btn-primary nav-link" onClick={() => setIsMenuOpen(false)}>{t.consultation}</Link>
+                                        <Link href="https://wa.me/966535195519" target="_blank" rel="noopener noreferrer" className="btn btn-primary nav-link" onClick={() => setIsMenuOpen(false)}>{t.consultation}</Link>
                                     </li>
                                 </ul>
 
@@ -214,7 +214,7 @@ const Navbar = () => {
                                     <div style={{ cursor: 'pointer', display: 'inline-block', marginInlineEnd: '15px' }} onClick={handleLanguageChange}>
                                         <Image src={t.langFlag} alt="flag" width={30} height={30} />
                                     </div>
-                                    <Link href={getLocalizedPath('/contact')} className="btn btn-primary">{t.consultation}</Link>
+                                    <Link href="https://wa.me/966535195519" target="_blank" rel="noopener noreferrer" className="btn btn-primary">{t.consultation}</Link>
                                 </div>
                             </div>
                         </nav>
