@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useParams, useRouter } from "next/navigation";
 import { useLanguage } from '../../../../../context/LanguageContext';
 import HeroSection from '../../../../components/HeroSection';
@@ -204,7 +205,10 @@ const BlogDetailContent = ({ blog }) => {
                                 <div className="article-content mt-4">
                                     <p className="blog-editor mb-3" style={{ fontWeight: 600 }}>
                                         <i className="fas fa-user-edit" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
-                                        {language === "ar" ? "تحرير: دكتور عبد الله المنيفي" : "Edited by: Dr. Abdullah AlMunifi"}
+                                        {language === "ar" ? "تحرير: " : "Edited by: "}
+                                        <Link href={`/${language}/about`} style={{ color: '#4fc3f7' }}>
+                                            {language === "ar" ? "دكتور عبد الله المنيفي" : "Dr. Abdullah AlMunifi"}
+                                        </Link>
                                     </p>
                                     {/* Use the render helper */}
                                     {renderContent()}
