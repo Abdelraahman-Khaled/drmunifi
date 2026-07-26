@@ -17,7 +17,7 @@ const HeroSection = ({ title, subTitle, subTitleLink, number }) => {
                             <h1 className="wow animate__animated animate__fadeInDown" style={{ textWrap: 'balance' }}>{title}</h1>
                             <ul className="wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
                                 <li>
-                                    <Link href={navT.homeLink} className="hover:text-primary transition-colors">
+                                    <Link href={`/${language}`} className="hover:text-primary transition-colors">
                                         {navT.home}
                                     </Link>
                                 </li>
