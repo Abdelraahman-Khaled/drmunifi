@@ -8,6 +8,7 @@ import { useLanguage } from '../../../../../context/LanguageContext';
 import HeroSection from '../../../../components/HeroSection';
 import ScrollTicker from '../../../../components/ScrollTicker';
 import FAQ from '../../../../components/FAQ';
+import { formatDate, toISODate } from '../../../../utils/formatDate';
 
 const BlogDetailContent = ({ blog }) => {
     const { language, setPathMap } = useLanguage();
@@ -153,6 +154,8 @@ const BlogDetailContent = ({ blog }) => {
 
     if (!blog) return null;
 
+    const publishedDate = formatDate(blog.created_at, language);
+
     // FAQ Schema Logic
     const faqSchema = blog?.faqs?.length > 0 ? {
         "@context": "https://schema.org",
@@ -203,13 +206,21 @@ const BlogDetailContent = ({ blog }) => {
                                 </div>
 
                                 <div className="article-content mt-4">
-                                    <p className="blog-editor mb-3" style={{ fontWeight: 600 }}>
-                                        <i className="fas fa-user-edit" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
-                                        {language === "ar" ? "تحرير: " : "Edited by: "}
-                                        <Link href={`/${language}/about`} style={{ color: '#4fc3f7' }}>
-                                            {language === "ar" ? "دكتور عبد الله المنيفي" : "Dr. Abdullah AlMunifi"}
-                                        </Link>
-                                    </p>
+                                    <div className="article-meta mb-3">
+                                        <p className="blog-editor mb-0" style={{ fontWeight: 600 }}>
+                                            <i className="fas fa-user-edit" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
+                                            {language === "ar" ? "تحرير: " : "Edited by: "}
+                                            <Link href={`/${language}/about`} style={{ color: '#4fc3f7' }}>
+                                                {language === "ar" ? "دكتور عبد الله المنيفي" : "Dr. Abdullah AlMunifi"}
+                                            </Link>
+                                        </p>
+                                        {publishedDate && (
+                                            <time className="post-date" dateTime={toISODate(blog.created_at)}>
+                                                <i className="far fa-calendar-alt" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
+                                                {language === "ar" ? "نُشر في " : "Published on "}{publishedDate}
+                                            </time>
+                                        )}
+                                    </div>
                                     {/* Use the render helper */}
                                     {renderContent()}
 

@@ -891,6 +891,7 @@ export const translations = {
       no_articles_found: "لا توجد مقالات لعرضها حالياً.",
       read_article: "اقرأ المزيد",
       load_more: "عرض المزيد",
+      published_on: "نُشر في",
     },
     en: {
       all_articles: "All Articles",
@@ -903,6 +904,7 @@ export const translations = {
       no_articles_found: "No articles found.",
       read_article: "Read More",
       load_more: "Load More",
+      published_on: "Published on",
     },
   },
   bookingForm: {

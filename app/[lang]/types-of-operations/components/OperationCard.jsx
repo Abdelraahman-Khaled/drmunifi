@@ -3,9 +3,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '../../../../context/LanguageContext'
+import { formatDate, toISODate } from '../../../utils/formatDate'
 
 const OperationCard = ({ operation }) => {
     const { language } = useLanguage();
+    const publishedDate = formatDate(operation.created_at, language);
 
     const title = language === 'ar' ? (operation.title_ar || operation.title) : (operation.title_en || operation.title_ar);
     const description = language === 'ar' ? (operation.description_ar || operation.description) : (operation.description_en || operation.description_ar);
@@ -30,6 +32,11 @@ const OperationCard = ({ operation }) => {
                 <h3>
                     <Link href={link}>{title}</Link>
                 </h3>
+                {publishedDate && (
+                    <time className="post-date" dateTime={toISODate(operation.created_at)}>
+                        <i className="far fa-calendar-alt"></i> {publishedDate}
+                    </time>
+                )}
                 <p className="line-clamp-2">{description}</p>
                 <Link href={link} className="read-more-btn">
                     {readMore} <i className="fas fa-arrow-right"></i>

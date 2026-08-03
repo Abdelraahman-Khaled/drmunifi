@@ -2,11 +2,13 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useParams, useRouter } from "next/navigation";
 import { useLanguage } from '../../../../../context/LanguageContext';
 import HeroSection from '../../../../components/HeroSection';
 import ScrollTicker from '../../../../components/ScrollTicker';
 import BookingForm from '../../../../components/BookingForm';
+import { formatDate, toISODate } from '../../../../utils/formatDate';
 
 const OperationDetailContent = ({ operation }) => {
     const { language, setPathMap } = useLanguage();
@@ -151,6 +153,7 @@ const OperationDetailContent = ({ operation }) => {
 
     const title = language === "ar" ? (operation.title_ar || operation.title) : (operation.title_en || operation.title);
     const subTitle = language === "ar" ? "أنواع جراحات السمنة" : "Types of Bariatric Surgeries";
+    const publishedDate = formatDate(operation.created_at, language);
 
     return (
         <>
@@ -188,6 +191,21 @@ const OperationDetailContent = ({ operation }) => {
                                 </div>
 
                                 <div className="article-content mt-4">
+                                    <div className="article-meta mb-3">
+                                        <p className="blog-editor mb-0" style={{ fontWeight: 600 }}>
+                                            <i className="fas fa-user-edit" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
+                                            {language === "ar" ? "تحرير: " : "Edited by: "}
+                                            <Link href={`/${language}/about`} style={{ color: '#4fc3f7' }}>
+                                                {language === "ar" ? "دكتور عبد الله المنيفي" : "Dr. Abdullah AlMunifi"}
+                                            </Link>
+                                        </p>
+                                        {publishedDate && (
+                                            <time className="post-date" dateTime={toISODate(operation.created_at)}>
+                                                <i className="far fa-calendar-alt" style={{ marginInlineEnd: '8px', color: '#4fc3f7' }}></i>
+                                                {language === "ar" ? "نُشر في " : "Published on "}{publishedDate}
+                                            </time>
+                                        )}
+                                    </div>
                                     {renderContent()}
 
                                     {/* Dedicated YouTube video field from the backend */}

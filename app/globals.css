@@ -442,3 +442,73 @@ a {
   max-height: 80vh;
   margin-inline: auto;
 }
+
+/* Mobile menu toggle: the theme pins it to the left, which collides with the
+   logo in LTR. Keep it on the side opposite the logo in both directions. */
+[dir="ltr"] .mean-container a.meanmenu-reveal {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .mean-container a.meanmenu-reveal {
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Give the toggle a real tap target (theme ships 35x30 with tiny padding) */
+.mean-container a.meanmenu-reveal {
+  width: 44px !important;
+  height: 44px !important;
+  padding-top: 14px !important;
+  padding-inline: 5px !important;
+  box-sizing: border-box !important;
+}
+
+/* Hero buttons: gap-based spacing so they breathe when they wrap on mobile */
+.main-banner-content .btn-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.main-banner-content .btn-box .btn,
+.main-banner-content .btn-box .btn-light {
+  margin: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .main-banner-content .btn-box {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* Publish date (created_at) on cards and detail pages */
+.post-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #677294;
+  margin-bottom: 8px;
+}
+
+.post-date i {
+  color: #3dde9e;
+  font-size: 13px;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.article-meta .post-date {
+  margin-bottom: 0;
+  font-size: 14px;
+}

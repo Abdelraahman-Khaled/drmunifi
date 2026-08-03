@@ -55,6 +55,7 @@ const HomeBlog = () => {
                                         description={language === "ar" ? blog.description_ar : blog.description_en || blog.description_ar}
                                         slug={language === "ar" ? blog.slug_ar : blog.slug || blog.slug_en}
                                         alt={blogAlt}
+                                        createdAt={blog.created_at}
                                     />
                                 </div>
                             )
