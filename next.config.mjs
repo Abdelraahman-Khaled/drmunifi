@@ -9,8 +9,6 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "**.almunifi.com" },
       { protocol: "https", hostname: "almunifi.com" },
-      { protocol: "http", hostname: "**.almunifi.com" },
-      { protocol: "http", hostname: "almunifi.com" },
     ],
   },
   // توحيد الدومين: www → non-www (301)
