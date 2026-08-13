@@ -443,6 +443,14 @@ a {
   margin-inline: auto;
 }
 
+/* TikTok embeds ship at 325x750 (video + player chrome), so they need their own
+   ratio rather than a plain 9:16. */
+.video-responsive.video-tiktok {
+  aspect-ratio: 325 / 750;
+  max-width: 325px;
+  margin-inline: auto;
+}
+
 /* Mobile menu toggle: the theme pins it to the left, which collides with the
    logo in LTR. Keep it on the side opposite the logo in both directions. */
 [dir="ltr"] .mean-container a.meanmenu-reveal {

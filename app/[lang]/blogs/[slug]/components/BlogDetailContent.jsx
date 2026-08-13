@@ -9,6 +9,7 @@ import HeroSection from '../../../../components/HeroSection';
 import ScrollTicker from '../../../../components/ScrollTicker';
 import FAQ from '../../../../components/FAQ';
 import { formatDate, toISODate } from '../../../../utils/formatDate';
+import { embedMedia, getYoutubeId, getTiktokId, youtubeEmbedSrc, tiktokEmbedSrc, YOUTUBE_ALLOW, TIKTOK_ALLOW } from '../../../../utils/embeds';
 
 const BlogDetailContent = ({ blog }) => {
     const { language, setPathMap } = useLanguage();
@@ -56,59 +57,10 @@ const BlogDetailContent = ({ blog }) => {
         // Ensure we don't add it if it's already there to avoid duplication on re-renders if content is stateful (though here it's prop-based)
         formatted = formatted.replace(/<li>(?!<i class="flaticon-check-mark"><\/i>)/gi, '<li><i class="flaticon-check-mark"></i> ');
 
-        // The backend may store the iframe HTML-escaped (&lt;iframe ...&gt;), which shows
-        // up as plain text. Decode any escaped iframe back to a real element first.
-        formatted = formatted.replace(/&lt;iframe[\s\S]*?&lt;\/iframe&gt;/gi, (match) =>
-            match
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&quot;/g, '"')
-                .replace(/&#39;/g, "'")
-                .replace(/&amp;/g, '&')
-        );
-
-        // Convert a plain YouTube link wrapped in an <a> tag into a responsive embed
-        formatted = formatted.replace(
-            /<a\b[^>]*href=["'](https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)[A-Za-z0-9_-]{11}[^"']*)["'][^>]*>[\s\S]*?<\/a>/gi,
-            (match, url) => buildYoutubeEmbed(getYoutubeId(url), /\/shorts\//i.test(url)) || match
-        );
-
-        // Convert a bare YouTube link (plain text) into a responsive embed
-        formatted = formatted.replace(
-            /(^|[\s>(])((?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)[A-Za-z0-9_-]{11}[^\s<)]*)/gi,
-            (match, pre, url) => {
-                const embed = buildYoutubeEmbed(getYoutubeId(url), /\/shorts\//i.test(url));
-                return embed ? pre + embed : match;
-            }
-        );
-
-        // Wrap any <iframe> (e.g. YouTube embeds coming from the backend) in a responsive
-        // container — skip ones already wrapped to avoid double wrapping.
-        formatted = formatted.replace(/(?<!<div class="video-responsive[^"]*">)(<iframe[\s\S]*?<\/iframe>)/gi, '<div class="video-responsive">$1</div>');
+        // Turn YouTube / TikTok links (and raw iframes) into responsive embeds
+        formatted = embedMedia(formatted);
 
         return formatted;
-    };
-
-    // Extract a YouTube video ID from a full URL or a raw ID
-    const getYoutubeId = (value) => {
-        if (!value) return "";
-        const patterns = [
-            /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/,
-            /^([A-Za-z0-9_-]{11})$/,
-        ];
-        for (const re of patterns) {
-            const match = value.match(re);
-            if (match) return match[1];
-        }
-        return "";
-    };
-
-    // Build a YouTube embed from a video ID. Shorts get a portrait (9:16) wrapper;
-    // normal videos return a bare iframe that the generic wrapper handles as 16:9.
-    const buildYoutubeEmbed = (videoId, isShort = false) => {
-        if (!videoId) return "";
-        const iframe = `<iframe src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-        return isShort ? `<div class="video-responsive video-short">${iframe}</div>` : iframe;
     };
 
     // Helper to strip HTML tags for schema
@@ -231,10 +183,28 @@ const BlogDetailContent = ({ blog }) => {
                                         return (
                                             <div className="video-responsive my-4">
                                                 <iframe
-                                                    src={`https://www.youtube.com/embed/${videoId}`}
+                                                    src={youtubeEmbedSrc(videoId)}
                                                     title="YouTube video player"
                                                     frameBorder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allow={YOUTUBE_ALLOW}
+                                                    referrerPolicy="strict-origin-when-cross-origin"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        );
+                                    })()}
+
+                                    {/* Dedicated TikTok video field from the backend */}
+                                    {(() => {
+                                        const tiktokId = getTiktokId(blog.tiktok_url || blog.tiktok);
+                                        if (!tiktokId) return null;
+                                        return (
+                                            <div className="video-responsive video-tiktok my-4">
+                                                <iframe
+                                                    src={tiktokEmbedSrc(tiktokId)}
+                                                    title="TikTok video player"
+                                                    frameBorder="0"
+                                                    allow={TIKTOK_ALLOW}
                                                     referrerPolicy="strict-origin-when-cross-origin"
                                                     allowFullScreen
                                                 ></iframe>
