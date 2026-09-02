@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "infographics": "node scripts/convert-infographics.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.1.1"
+    "eslint-config-next": "16.1.1",
+    "pdf-to-img": "^7.0.0"
   }
 }

@@ -7,7 +7,7 @@ export default function robots() {
       // index images, and correctly render pages. Longest-match wins,
       // so these override the broader /assets/ disallow below.
       allow: ["/"],
-      disallow: ["/cdn-cgi/"],
+      disallow: ["/cdn-cgi/", "/api/infographic"],
     },
     sitemap: [
       "https://almunifi.com/sitemap.xml",

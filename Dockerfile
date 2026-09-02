@@ -51,6 +51,10 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Infographic images live outside public/ so they can only be reached through
+# the /api/infographic route. The source PDFs are deliberately NOT copied.
+COPY --from=builder --chown=nextjs:nodejs /app/protected-assets/infographics ./protected-assets/infographics
+
 USER nextjs
 
 EXPOSE 3000

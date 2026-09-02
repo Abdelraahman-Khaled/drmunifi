@@ -96,22 +96,22 @@ export const translations = {
         desc: "ابدأ الآن لأن صحتك تستحق بداية جديدة",
         items: [
           {
-            pdf: "/assets/img/Infographic/01.pdf",
+            pdf: "/api/infographic/01",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 01.webp",
           },
           {
-            pdf: "/assets/img/Infographic/03.pdf",
+            pdf: "/api/infographic/03",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 03.webp",
           },
           {
-            pdf: "/assets/img/Infographic/04.pdf",
+            pdf: "/api/infographic/04",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 04.webp",
           },
           {
-            pdf: "/assets/img/Infographic/05.pdf",
+            pdf: "/api/infographic/05",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 05.webp",
           },
@@ -363,22 +363,22 @@ export const translations = {
         desc: "Start now because your health deserves a new beginning",
         items: [
           {
-            pdf: "/assets/img/Infographic/01.pdf",
+            pdf: "/api/infographic/01",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 01.webp",
           },
           {
-            pdf: "/assets/img/Infographic/03.pdf",
+            pdf: "/api/infographic/03",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 03.webp",
           },
           {
-            pdf: "/assets/img/Infographic/04.pdf",
+            pdf: "/api/infographic/04",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 04.webp",
           },
           {
-            pdf: "/assets/img/Infographic/05.pdf",
+            pdf: "/api/infographic/05",
             thumb:
               "/assets/img/Infographic/Thumbnail/Infographic Thumbnail 05.webp",
           },
