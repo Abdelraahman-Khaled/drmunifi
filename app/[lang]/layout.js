@@ -6,6 +6,7 @@ import Preloader from "../components/Preloader";
 import MagicCursor from "../components/MagicCursor";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import Script from "next/script";
+import { permanentRedirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const lang = (await params).lang || "ar";
@@ -98,6 +99,10 @@ export async function generateMetadata({ params }) {
 
 export default async function RootLayout({ children, params }) {
   const lang = (await params).lang || "ar";
+
+  // [lang] بيلقط أي سيجمنت، فأي لغة مش معروفة تتحول للهوم بدل ما ترندر صفحة مكسورة
+  if (lang !== "ar" && lang !== "en") permanentRedirect("/ar");
+
   const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (

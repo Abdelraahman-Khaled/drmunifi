@@ -22,6 +22,23 @@ const nextConfig = {
       },
     ];
   },
+  // أي مسار غير موجود (صفحة أو ملف أو أي حاجة) بدل 404 → 301 على الهوم.
+  // fallback بيشتغل بعد فحص الملفات الثابتة وكل الراوتس، يعني آخر خطوة قبل 404،
+  // فالملفات والصفحات الموجودة فعلاً ما بتتأثرش.
+  async rewrites() {
+    return {
+      beforeFiles: [],
+      afterFiles: [],
+      fallback: [
+        {
+          // استثناء /.well-known/ عشان ما نكسرش تجديد شهادات SSL وملفات التحقق
+          source: "/:path((?!\.well-known/).*)",
+          destination: "/api/not-found?path=/:path",
+        },
+      ],
+    };
+  },
+
   // ترويسات الأمان
   async headers() {
     return [

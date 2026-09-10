@@ -1,7 +1,7 @@
 import React from 'react'
 import { getOperationDetails } from '../../../api/operations';
 import OperationDetailContent from './components/OperationDetailContent';
-import { notFound } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
 async function getOperation(slug) {
     try {
@@ -74,12 +74,13 @@ export async function generateMetadata({ params }) {
 }
 
 const OperationDetailsPage = async ({ params }) => {
-    const { slug: encodedSlug } = await params;
+    const { slug: encodedSlug, lang } = await params;
     const slug = decodeURIComponent(encodedSlug);
     const operation = await getOperation(slug);
 
+    // عملية غير موجودة → تحويل دائم للهوم بدل 404 (SEO)
     if (!operation) {
-        notFound();
+        permanentRedirect(`/${lang}`);
     }
 
     return (
