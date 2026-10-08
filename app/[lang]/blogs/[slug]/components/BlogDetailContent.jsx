@@ -10,6 +10,7 @@ import ScrollTicker from '../../../../components/ScrollTicker';
 import FAQ from '../../../../components/FAQ';
 import { formatDate, toISODate } from '../../../../utils/formatDate';
 import { embedMedia, getYoutubeId, getTiktokId, youtubeEmbedSrc, tiktokEmbedSrc, YOUTUBE_ALLOW, TIKTOK_ALLOW } from '../../../../utils/embeds';
+import { formatTables } from '../../../../utils/tables';
 
 const BlogDetailContent = ({ blog }) => {
     const { language, setPathMap } = useLanguage();
@@ -59,6 +60,9 @@ const BlogDetailContent = ({ blog }) => {
 
         // Turn YouTube / TikTok links (and raw iframes) into responsive embeds
         formatted = embedMedia(formatted);
+
+        // Wrap tables so wide ones scroll instead of breaking the layout
+        formatted = formatTables(formatted);
 
         return formatted;
     };
